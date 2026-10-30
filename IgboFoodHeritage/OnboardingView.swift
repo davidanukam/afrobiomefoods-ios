@@ -114,51 +114,55 @@ private struct SignInStep: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                StyledText(text: model.t("signInSubtitle"), kind: .body, color: colors.textMuted, alignment: .center)
-                    .frame(maxWidth: .infinity)
-                if !model.supabaseEnabled {
-                    StyledText(text: model.t("supabaseMissingGuest"), kind: .caption, color: colors.textMuted, alignment: .center)
+                Group {
+                    StyledText(text: model.t("signInSubtitle"), kind: .body, color: colors.textMuted, alignment: .center)
                         .frame(maxWidth: .infinity)
-                }
-                HStack(spacing: 10) {
-                    Chip(label: model.t("signIn"), active: mode == "login", expands: true) { mode = "login" }
-                    Chip(label: model.t("register"), active: mode == "register", expands: true) { mode = "register" }
-                }
-                .padding(.vertical, 8)
-                FieldLabel(text: "Email")
-                RoundedField(placeholder: "you@example.com", text: $email, keyboard: .emailAddress, contentType: .emailAddress, autocapitalize: false)
-                FieldLabel(text: model.t("password"))
-                RoundedField(placeholder: "••••••••", text: $password, secure: true, contentType: .password, autocapitalize: false)
-                if mode == "register" {
-                    FieldLabel(text: model.t("confirmPassword"))
-                    RoundedField(placeholder: "••••••••", text: $confirm, secure: true, contentType: .password, autocapitalize: false)
-                }
-                PrimaryButton(title: buttonTitle, disabled: busy) {
-                    Task { await submit() }
-                }
-                if model.supabaseEnabled {
-                    StyledText(text: model.t("orWord"), kind: .caption, color: colors.textMuted, alignment: .center)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, 8)
-                    Button {
-                        Task { await google() }
-                    } label: {
-                        Text("Continue with Google")
-                            .font(.system(size: 17 * model.settings.fontScale.multiplier, weight: .semibold))
-                            .foregroundStyle(colors.text)
+                    if !model.supabaseEnabled {
+                        StyledText(text: model.t("supabaseMissingGuest"), kind: .caption, color: colors.textMuted, alignment: .center)
                             .frame(maxWidth: .infinity)
-                            .frame(minHeight: 52)
-                            .background(colors.card)
-                            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                            .overlay(RoundedRectangle(cornerRadius: 18).stroke(colors.border))
                     }
-                    .buttonStyle(.plain)
-                    .disabled(busy)
+                    HStack(spacing: 10) {
+                        Chip(label: model.t("signIn"), active: mode == "login", expands: true) { mode = "login" }
+                        Chip(label: model.t("register"), active: mode == "register", expands: true) { mode = "register" }
+                    }
+                    .padding(.vertical, 8)
+                    FieldLabel(text: "Email")
+                    RoundedField(placeholder: "you@example.com", text: $email, keyboard: .emailAddress, contentType: .emailAddress, autocapitalize: false)
+                    FieldLabel(text: model.t("password"))
+                    RoundedField(placeholder: "••••••••", text: $password, secure: true, contentType: .password, autocapitalize: false)
                 }
-                PrimaryButton(title: model.t("guestContinue"), outline: true) {
-                    model.completeOnboarding(guest: true)
+                Group {
+                    if mode == "register" {
+                        FieldLabel(text: model.t("confirmPassword"))
+                        RoundedField(placeholder: "••••••••", text: $confirm, secure: true, contentType: .password, autocapitalize: false)
+                    }
+                    PrimaryButton(title: buttonTitle, disabled: busy) {
+                        Task { await submit() }
+                    }
+                    if model.supabaseEnabled {
+                        StyledText(text: model.t("orWord"), kind: .caption, color: colors.textMuted, alignment: .center)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 8)
+                        Button {
+                            Task { await google() }
+                        } label: {
+                            Text("Continue with Google")
+                                .font(.system(size: 17 * model.settings.fontScale.multiplier, weight: .semibold))
+                                .foregroundStyle(colors.text)
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: 52)
+                                .background(colors.card)
+                                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                .overlay(RoundedRectangle(cornerRadius: 18).stroke(colors.border))
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(busy)
+                    }
+                    PrimaryButton(title: model.t("guestContinue"), outline: true) {
+                        model.completeOnboarding(guest: true)
+                    }
+                    .padding(.top, 12)
                 }
-                .padding(.top, 12)
             }
             .padding(24)
         }

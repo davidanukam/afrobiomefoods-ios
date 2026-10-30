@@ -126,19 +126,19 @@ final class AppModel: ObservableObject {
     }
 
     func signIn(email: String, password: String) async throws {
-        guard let client else { throw SupabaseError.message(t("supabaseEnvSetup")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseEnvSetup")) }
         let next = try await client.signIn(email: email, password: password)
         store(next)
     }
 
     func register(email: String, password: String) async throws {
-        guard let client else { throw SupabaseError.message(t("supabaseEnvSetup")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseEnvSetup")) }
         let next = try await client.signUp(email: email, password: password)
         store(next)
     }
 
     func signInWithGoogle() async throws {
-        guard let client else { throw SupabaseError.message(t("supabaseEnvSetup")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseEnvSetup")) }
         if let next = try await client.signInWithGoogle() {
             store(next)
         }
@@ -183,8 +183,8 @@ final class AppModel: ObservableObject {
     }
 
     func publishPost(kind: String, body: String, audience: String) async throws {
-        guard let client else { throw SupabaseError.message(t("demoPostNoSupabase")) }
-        guard session != nil else { throw SupabaseError.message(t("signInToPost")) }
+        guard let client else { throw SupabaseError.failure(t("demoPostNoSupabase")) }
+        guard session != nil else { throw SupabaseError.failure(t("signInToPost")) }
         let title = body.count > 120 ? "\(body.prefix(117))…" : body
         try await client.insertPost(
             title: title,
@@ -197,17 +197,17 @@ final class AppModel: ObservableObject {
     }
 
     func loadAdminRecipes() async throws -> [RemoteRecipe] {
-        guard let client else { throw SupabaseError.message(t("supabaseNotConfigured")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseNotConfigured")) }
         return try await client.fetchRecipes()
     }
 
     func saveAdminRecipe(existingId: String?, sourceId: String, doc: [String: Any]) async throws {
-        guard let client else { throw SupabaseError.message(t("supabaseNotConfigured")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseNotConfigured")) }
         try await client.saveRecipe(existingId: existingId, sourceId: sourceId, doc: doc)
     }
 
     func deleteAdminRecipe(id: String) async throws {
-        guard let client else { throw SupabaseError.message(t("supabaseNotConfigured")) }
+        guard let client else { throw SupabaseError.failure(t("supabaseNotConfigured")) }
         try await client.deleteRecipe(id: id)
     }
 

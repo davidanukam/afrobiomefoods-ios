@@ -54,69 +54,79 @@ struct AdminRecipesView: View {
     private var editor: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 8) {
-                    PrimaryButton(title: "New recipe", outline: true) { startNew() }
-                    PrimaryButton(title: loading ? "Refreshing..." : "Refresh", outline: true, disabled: loading) {
-                        Task { await load() }
+                Group {
+                    HStack(spacing: 8) {
+                        PrimaryButton(title: "New recipe", outline: true) { startNew() }
+                        PrimaryButton(title: loading ? "Refreshing..." : "Refresh", outline: true, disabled: loading) {
+                            Task { await load() }
+                        }
                     }
-                }
-                PrimaryButton(title: "Delete", outline: true, disabled: loading || selected == nil) {
-                    confirmDelete = true
-                }
-                StyledText(text: "Recipes", kind: .subtitle, color: colors.text)
-                ForEach(rows) { row in
-                    Button {
-                        selectedId = row.id
-                        form = RecipeForm(row)
-                    } label: {
-                        Text(row.sourceId?.isEmpty == false ? row.sourceId! : row.id)
-                            .font(.system(size: 13 * model.settings.fontScale.multiplier))
-                            .foregroundStyle(colors.text)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 12)
-                            .frame(minHeight: 42)
-                            .background(row.id == selectedId ? colors.gold.opacity(0.27) : colors.card)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(row.id == selectedId ? colors.forest : colors.border))
+                    PrimaryButton(title: "Delete", outline: true, disabled: loading || selected == nil) {
+                        confirmDelete = true
                     }
-                    .buttonStyle(.plain)
+                    StyledText(text: "Recipes", kind: .subtitle, color: colors.text)
+                    ForEach(rows) { row in
+                        Button {
+                            selectedId = row.id
+                            form = RecipeForm(row)
+                        } label: {
+                            Text(row.sourceId?.isEmpty == false ? row.sourceId! : row.id)
+                                .font(.system(size: 13 * model.settings.fontScale.multiplier))
+                                .foregroundStyle(colors.text)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 12)
+                                .frame(minHeight: 42)
+                                .background(row.id == selectedId ? colors.gold.opacity(0.27) : colors.card)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                .overlay(RoundedRectangle(cornerRadius: 16).stroke(row.id == selectedId ? colors.forest : colors.border))
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
 
-                field("source_id", text: $form.sourceId)
-                StyledText(text: "Category", kind: .caption, color: colors.textMuted)
-                FlowChips {
-                    ForEach(categoryChoices, id: \.self) { category in
-                        Chip(label: category, active: form.category == category) { form.category = category }
+                Group {
+                    field("source_id", text: $form.sourceId)
+                    StyledText(text: "Category", kind: .caption, color: colors.textMuted)
+                    FlowChips {
+                        ForEach(categoryChoices, id: \.self) { category in
+                            Chip(label: category, active: form.category == category) { form.category = category }
+                        }
                     }
-                }
-                field("name_en", text: $form.nameEn)
-                field("name_ig", text: $form.nameIg)
-                field("cook_minutes", text: $form.cookMinutes, number: true)
-                field("servings", text: $form.servings, number: true)
-                StyledText(text: "difficulty", kind: .caption, color: colors.textMuted)
-                FlowChips {
-                    ForEach(difficultyChoices, id: \.self) { difficulty in
-                        Chip(label: difficulty, active: form.difficulty == difficulty) { form.difficulty = difficulty }
+                    field("name_en", text: $form.nameEn)
+                    field("name_ig", text: $form.nameIg)
+                    field("cook_minutes", text: $form.cookMinutes, number: true)
+                    field("servings", text: $form.servings, number: true)
+                    StyledText(text: "difficulty", kind: .caption, color: colors.textMuted)
+                    FlowChips {
+                        ForEach(difficultyChoices, id: \.self) { difficulty in
+                            Chip(label: difficulty, active: form.difficulty == difficulty) { form.difficulty = difficulty }
+                        }
                     }
+                    field("calories", text: $form.calories, number: true)
                 }
-                field("calories", text: $form.calories, number: true)
-                field("protein", text: $form.protein, number: true)
-                field("fiber", text: $form.fiber, number: true)
-                area("ingredients_en (one per line)", text: $form.ingredientsEn)
-                area("ingredients_ig (one per line)", text: $form.ingredientsIg)
-                area("instructions_en (one per line)", text: $form.instructionsEn)
-                area("instructions_ig (one per line)", text: $form.instructionsIg)
-                area("cultural_notes_en", text: $form.notesEn)
-                area("cultural_notes_ig", text: $form.notesIg)
-                area("health_tags (one per line)", text: $form.healthTags)
-                field("image_hint", text: $form.imageHint)
-                field("audio_en (optional URL)", text: $form.audioEn)
-                field("audio_ig (optional URL)", text: $form.audioIg)
-                PrimaryButton(title: loading ? "Saving..." : "Save to Supabase", disabled: loading) {
-                    Task { await save() }
+
+                Group {
+                    field("protein", text: $form.protein, number: true)
+                    field("fiber", text: $form.fiber, number: true)
+                    area("ingredients_en (one per line)", text: $form.ingredientsEn)
+                    area("ingredients_ig (one per line)", text: $form.ingredientsIg)
+                    area("instructions_en (one per line)", text: $form.instructionsEn)
+                    area("instructions_ig (one per line)", text: $form.instructionsIg)
+                    area("cultural_notes_en", text: $form.notesEn)
+                    area("cultural_notes_ig", text: $form.notesIg)
+                    area("health_tags (one per line)", text: $form.healthTags)
+                    field("image_hint", text: $form.imageHint)
                 }
-                if let selected {
-                    StyledText(text: "Editing row: \(selected.id)", kind: .caption, color: colors.textMuted)
+
+                Group {
+                    field("audio_en (optional URL)", text: $form.audioEn)
+                    field("audio_ig (optional URL)", text: $form.audioIg)
+                    PrimaryButton(title: loading ? "Saving..." : "Save to Supabase", disabled: loading) {
+                        Task { await save() }
+                    }
+                    if let selected {
+                        StyledText(text: "Editing row: \(selected.id)", kind: .caption, color: colors.textMuted)
+                    }
                 }
             }
             .padding(16)

@@ -70,9 +70,9 @@ struct CommunityView: View {
 
     private func kindKey(_ kind: String) -> String {
         switch kind {
-        case "recipe": "kindRecipe"
-        case "memory": "kindMemory"
-        default: "kindStory"
+        case "recipe": return "kindRecipe"
+        case "memory": return "kindMemory"
+        default: return "kindStory"
         }
     }
 

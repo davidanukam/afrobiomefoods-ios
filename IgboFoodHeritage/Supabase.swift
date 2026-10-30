@@ -37,7 +37,7 @@ struct AuthSession: Codable, Equatable {
     init(json: [String: Any]) throws {
         guard let accessToken = json["access_token"] as? String,
               let refreshToken = json["refresh_token"] as? String else {
-            throw SupabaseError.message("Check your email to confirm the account, then sign in.")
+            throw SupabaseError.failure("Check your email to confirm the account, then sign in.")
         }
         let user = json["user"] as? [String: Any] ?? [:]
         let metadata = user["user_metadata"] as? [String: Any] ?? [:]
@@ -64,11 +64,12 @@ struct RemoteRecipe: Identifiable {
 }
 
 enum SupabaseError: LocalizedError {
-    case message(String)
+    case failure(String)
 
     var errorDescription: String? {
         switch self {
-        case .message(let message): message
+        case .failure(let text):
+            return text
         }
     }
 }
@@ -84,7 +85,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         self.session = session
     }
 
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+    nonisolated func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         return scenes.flatMap(\.windows).first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
@@ -117,7 +118,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
     func refreshClaims() async throws -> AuthSession {
         try await refreshSession()
         let json = try await send(method: "GET", path: "auth/v1/user", bearer: session?.accessToken, retry: true)
-        guard var current = session else { throw SupabaseError.message("Not signed in") }
+        guard var current = session else { throw SupabaseError.failure("Not signed in") }
         let user = object(json)
         let appMetadata = user["app_metadata"] as? [String: Any] ?? [:]
         if let flag = appMetadata["admin"] as? Bool {
@@ -150,7 +151,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
             URLQueryItem(name: "code_challenge_method", value: "s256"),
             URLQueryItem(name: "apikey", value: config.key),
         ]
-        guard let url = components?.url else { throw SupabaseError.message("Could not start Google sign-in.") }
+        guard let url = components?.url else { throw SupabaseError.failure("Could not start Google sign-in.") }
 
         let code: String? = try await withCheckedThrowingContinuation { continuation in
             let session = ASWebAuthenticationSession(url: url, callbackURLScheme: "igbo-food-heritage") { callback, error in
@@ -163,16 +164,16 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
                     return
                 }
                 guard let callback else {
-                    continuation.resume(throwing: SupabaseError.message("Google sign-in did not return a code."))
+                    continuation.resume(throwing: SupabaseError.failure("Google sign-in did not return a code."))
                     return
                 }
                 let items = URLComponents(url: callback, resolvingAgainstBaseURL: false)?.queryItems ?? []
                 if let description = items.first(where: { $0.name == "error_description" })?.value {
-                    continuation.resume(throwing: SupabaseError.message(description.removingPercentEncoding ?? description))
+                    continuation.resume(throwing: SupabaseError.failure(description.removingPercentEncoding ?? description))
                     return
                 }
                 guard let code = items.first(where: { $0.name == "code" })?.value else {
-                    continuation.resume(throwing: SupabaseError.message("Google sign-in did not return a code."))
+                    continuation.resume(throwing: SupabaseError.failure("Google sign-in did not return a code."))
                     return
                 }
                 continuation.resume(returning: code)
@@ -204,11 +205,11 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
             retry: true
         )
         guard let rows = json as? [[String: Any]], !rows.isEmpty else { return [] }
-        return rows.compactMap(Self.mapPost)
+        return rows.compactMap { Self.mapPost($0) }
     }
 
     func insertPost(title: String, content: String, language: String, kind: String, audience: String) async throws {
-        guard let session else { throw SupabaseError.message("Sign in required") }
+        guard let session else { throw SupabaseError.failure("Sign in required") }
         let body: [String: Any] = [
             "title": title,
             "content": content,
@@ -237,7 +238,8 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
             retry: true
         )
         guard let rows = json as? [[String: Any]], !rows.isEmpty else { return [] }
-        return rows.compactMap(Self.mapService).filter { !$0.address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        let mapped = rows.compactMap { Self.mapService($0) }
+        return mapped.filter { !$0.address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
     }
 
     func fetchRecipes() async throws -> [RemoteRecipe] {
@@ -297,7 +299,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
 
     @discardableResult
     private func refreshSession() async throws -> AuthSession {
-        guard let refresh = session?.refreshToken else { throw SupabaseError.message("Not signed in") }
+        guard let refresh = session?.refreshToken else { throw SupabaseError.failure("Not signed in") }
         let json = try await post(
             path: "auth/v1/token",
             query: "grant_type=refresh_token",
@@ -347,7 +349,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
             )
         }
         if status >= 400 {
-            throw SupabaseError.message(Self.message(from: data, status: status))
+            throw SupabaseError.failure(Self.message(from: data, status: status))
         }
         if data.isEmpty { return [:] }
         return try JSONSerialization.jsonObject(with: data)
@@ -364,7 +366,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         json as? [String: Any] ?? [:]
     }
 
-    private static func message(from data: Data, status: Int) -> String {
+    nonisolated private static func message(from data: Data, status: Int) -> String {
         if let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
             let message = (object["error_description"] as? String)
                 ?? (object["msg"] as? String)
@@ -375,7 +377,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         return "Request failed (\(status))"
     }
 
-    private static func mapPost(_ row: [String: Any]) -> CommunityPost? {
+    nonisolated private static func mapPost(_ row: [String: Any]) -> CommunityPost? {
         guard let id = row["id"] as? String else { return nil }
         let content = string(row["content"])
         let language = row["language"] as? String
@@ -392,7 +394,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         return decode(CommunityPost.self, from: payload)
     }
 
-    private static func mapService(_ row: [String: Any]) -> ServiceItem? {
+    nonisolated private static func mapService(_ row: [String: Any]) -> ServiceItem? {
         let doc = row["doc"] as? [String: Any] ?? [:]
         let id = (row["id"] as? String) ?? string(doc["service_id"])
         guard !id.isEmpty else { return nil }
@@ -415,17 +417,17 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         return decode(ServiceItem.self, from: payload)
     }
 
-    private static func decode<T: Decodable>(_ type: T.Type, from payload: [String: Any]) -> T? {
+    nonisolated private static func decode<T: Decodable>(_ type: T.Type, from payload: [String: Any]) -> T? {
         guard JSONSerialization.isValidJSONObject(payload),
               let data = try? JSONSerialization.data(withJSONObject: payload) else { return nil }
         return try? JSONDecoder().decode(T.self, from: data)
     }
 
-    private static func string(_ value: Any?) -> String {
+    nonisolated private static func string(_ value: Any?) -> String {
         value as? String ?? ""
     }
 
-    private static func firstString(_ values: Any?...) -> String {
+    nonisolated private static func firstString(_ values: Any?...) -> String {
         for value in values {
             let text = string(value)
             if !text.isEmpty { return text }
@@ -433,21 +435,21 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
         return ""
     }
 
-    private static func number(_ value: Any?) -> Double {
+    nonisolated private static func number(_ value: Any?) -> Double {
         if let number = value as? NSNumber { return number.doubleValue }
         if let text = value as? String, let number = Double(text) { return number }
         return 0
     }
 
-    private static func randomVerifier() -> String {
+    nonisolated private static func randomVerifier() -> String {
         var bytes = [UInt8](repeating: 0, count: 32)
         _ = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
-        return Data(bytes).base64URL()
+        return Data(bytes).base64URL
     }
 
-    private static func challenge(for verifier: String) -> String {
+    nonisolated private static func challenge(for verifier: String) -> String {
         let digest = SHA256.hash(data: Data(verifier.utf8))
-        return Data(digest).base64URL()
+        return Data(digest).base64URL
     }
 }
 

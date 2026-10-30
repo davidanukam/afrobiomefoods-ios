@@ -140,74 +140,80 @@ struct RecipeDetailView: View {
         let copy = model.recipeCopy(recipe)
         return ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                StyledText(text: copy.name, kind: .title, color: colors.text)
-                    .padding(.bottom, 4)
-                PhotoView(filename: recipe.ingredient_image, height: 220)
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .accessibilityLabel("\(copy.name), \(model.t("ingredientPhoto"))")
+                Group {
+                    StyledText(text: copy.name, kind: .title, color: colors.text)
+                        .padding(.bottom, 4)
+                    PhotoView(filename: recipe.ingredient_image, height: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .accessibilityLabel("\(copy.name), \(model.t("ingredientPhoto"))")
 
-                StyledText(text: model.t("listen"), kind: .caption, color: colors.textMuted)
-                    .padding(.top, 8)
-                HStack(spacing: 8) {
-                    listenButton(model.t("listenEn"), fill: model.settings.highContrast ? colors.forest : colors.gold, text: model.settings.highContrast ? colors.inverse : colors.forest) {
-                        read(recipe, language: .en)
+                    StyledText(text: model.t("listen"), kind: .caption, color: colors.textMuted)
+                        .padding(.top, 8)
+                    HStack(spacing: 8) {
+                        listenButton(model.t("listenEn"), fill: model.settings.highContrast ? colors.forest : colors.gold, text: model.settings.highContrast ? colors.inverse : colors.forest) {
+                            read(recipe, language: .en)
+                        }
+                        listenButton(model.t("listenIg"), fill: colors.forestLight, text: colors.inverse) {
+                            read(recipe, language: .ig)
+                        }
+                        listenButton(model.t("listenFr"), fill: model.settings.highContrast ? colors.forest : Color(hex: 0x8C4A32), text: colors.inverse) {
+                            read(recipe, language: .fr)
+                        }
                     }
-                    listenButton(model.t("listenIg"), fill: colors.forestLight, text: colors.inverse) {
-                        read(recipe, language: .ig)
-                    }
-                    listenButton(model.t("listenFr"), fill: model.settings.highContrast ? colors.forest : Color(hex: 0x8C4A32), text: colors.inverse) {
-                        read(recipe, language: .fr)
+
+                    StyledText(text: model.t("ingredients"), kind: .subtitle, color: colors.text)
+                        .padding(.top, 8)
+                    ForEach(Array(copy.ingredients.enumerated()), id: \.offset) { _, line in
+                        StyledText(text: "• \(line)", kind: .body, color: colors.text)
                     }
                 }
 
-                StyledText(text: model.t("ingredients"), kind: .subtitle, color: colors.text)
-                    .padding(.top, 8)
-                ForEach(Array(copy.ingredients.enumerated()), id: \.offset) { _, line in
-                    StyledText(text: "• \(line)", kind: .body, color: colors.text)
-                }
+                Group {
+                    PhotoView(filename: recipe.final_image, height: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .padding(.top, 8)
+                        .accessibilityLabel("\(copy.name), \(model.t("finishedDishPhoto"))")
 
-                PhotoView(filename: recipe.final_image, height: 220)
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .padding(.top, 8)
-                    .accessibilityLabel("\(copy.name), \(model.t("finishedDishPhoto"))")
-
-                StyledText(text: model.t("instructions"), kind: .subtitle, color: colors.text)
-                    .padding(.top, 8)
-                ForEach(Array(copy.instructions.enumerated()), id: \.offset) { index, line in
-                    StyledText(text: "\(index + 1). \(line)", kind: .body, color: colors.text)
-                }
-
-                StyledText(text: model.t("culturalNotes"), kind: .subtitle, color: colors.text)
-                    .padding(.top, 8)
-                StyledText(text: copy.cultural, kind: .body, color: colors.text)
-
-                StyledText(text: model.t("healthBenefits"), kind: .subtitle, color: colors.text)
-                    .padding(.top, 8)
-                StyledText(
-                    text: "kcal: \(recipe.nutrition.calories) · Protein: \(recipe.nutrition.protein)g · Fiber: \(recipe.nutrition.fiber)g",
-                    kind: .caption,
-                    color: colors.textMuted
-                )
-                ForEach(Array(recipe.health_tags.enumerated()), id: \.offset) { _, tag in
-                    StyledText(text: "• \(tag)", kind: .body, color: colors.text)
-                }
-
-                cookingLink(recipe)
-                    .padding(.top, 12)
-                HStack(spacing: 12) {
-                    Button {
-                        notice = Notice(title: model.t("save"), message: model.t("savedRecipesPhase2"))
-                    } label: {
-                        outlineLabel(model.t("save"))
+                    StyledText(text: model.t("instructions"), kind: .subtitle, color: colors.text)
+                        .padding(.top, 8)
+                    ForEach(Array(copy.instructions.enumerated()), id: \.offset) { index, line in
+                        StyledText(text: "\(index + 1). \(line)", kind: .body, color: colors.text)
                     }
-                    .buttonStyle(.plain)
-                    ShareLink(item: shareBody(copy)) {
-                        outlineLabel(model.t("share"))
-                    }
-                    .buttonStyle(.plain)
+
+                    StyledText(text: model.t("culturalNotes"), kind: .subtitle, color: colors.text)
+                        .padding(.top, 8)
+                    StyledText(text: copy.cultural, kind: .body, color: colors.text)
                 }
-                StyledText(text: model.t("demoAudio"), kind: .caption, color: colors.textMuted)
-                    .padding(.top, 8)
+
+                Group {
+                    StyledText(text: model.t("healthBenefits"), kind: .subtitle, color: colors.text)
+                        .padding(.top, 8)
+                    StyledText(
+                        text: "kcal: \(recipe.nutrition.calories) · Protein: \(recipe.nutrition.protein)g · Fiber: \(recipe.nutrition.fiber)g",
+                        kind: .caption,
+                        color: colors.textMuted
+                    )
+                    ForEach(Array(recipe.health_tags.enumerated()), id: \.offset) { _, tag in
+                        StyledText(text: "• \(tag)", kind: .body, color: colors.text)
+                    }
+
+                    cookingLink(recipe)
+                        .padding(.top, 12)
+                    HStack(spacing: 12) {
+                        Button {
+                            notice = Notice(title: model.t("save"), message: model.t("savedRecipesPhase2"))
+                        } label: {
+                            outlineLabel(model.t("save"))
+                        }
+                        .buttonStyle(.plain)
+                        ShareLink(item: shareBody(copy)) {
+                            outlineLabel(model.t("share"))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    StyledText(text: model.t("demoAudio"), kind: .caption, color: colors.textMuted)
+                        .padding(.top, 8)
+                }
             }
             .padding(20)
             .padding(.bottom, 16)

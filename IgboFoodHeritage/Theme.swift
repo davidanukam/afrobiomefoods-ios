@@ -93,23 +93,23 @@ enum TextKind {
 
     var size: CGFloat {
         switch self {
-        case .title: 28
-        case .subtitle: 20
-        case .body: 17
-        case .label: 15
-        case .caption: 13
-        case .eyebrow: 12
+        case .title: return 28
+        case .subtitle: return 20
+        case .body: return 17
+        case .label: return 15
+        case .caption: return 13
+        case .eyebrow: return 12
         }
     }
 
     var weight: Font.Weight {
         switch self {
-        case .title: .heavy
-        case .subtitle: .bold
-        case .body: .regular
-        case .label: .semibold
-        case .caption: .regular
-        case .eyebrow: .semibold
+        case .title: return .heavy
+        case .subtitle: return .bold
+        case .body: return .regular
+        case .label: return .semibold
+        case .caption: return .regular
+        case .eyebrow: return .semibold
         }
     }
 }

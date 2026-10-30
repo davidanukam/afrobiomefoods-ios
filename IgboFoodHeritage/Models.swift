@@ -7,25 +7,25 @@ enum Lang: String, Codable, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .en: "English"
-        case .ig: "Igbo"
-        case .fr: "Français"
+        case .en: return "English"
+        case .ig: return "Igbo"
+        case .fr: return "Français"
         }
     }
 
     var speechCode: String {
         switch self {
-        case .en: "en-US"
-        case .ig: "ig-NG"
-        case .fr: "fr-FR"
+        case .en: return "en-US"
+        case .ig: return "ig-NG"
+        case .fr: return "fr-FR"
         }
     }
 
     var next: Lang {
         switch self {
-        case .en: .ig
-        case .ig: .fr
-        case .fr: .en
+        case .en: return .ig
+        case .ig: return .fr
+        case .fr: return .en
         }
     }
 }
@@ -37,17 +37,17 @@ enum FontScaleKey: String, Codable, CaseIterable, Identifiable {
 
     var multiplier: CGFloat {
         switch self {
-        case .normal: 1
-        case .large: 1.15
-        case .xlarge: 1.3
+        case .normal: return 1
+        case .large: return 1.15
+        case .xlarge: return 1.3
         }
     }
 
     var labelKey: String {
         switch self {
-        case .normal: "normal"
-        case .large: "large"
-        case .xlarge: "extraLarge"
+        case .normal: return "normal"
+        case .large: return "large"
+        case .xlarge: return "extraLarge"
         }
     }
 }
@@ -99,9 +99,12 @@ struct RecipeCategoryInfo: Codable, Identifiable, Hashable {
 
     func label(for lang: Lang) -> String {
         switch lang {
-        case .ig: label_ig
-        case .fr: label_fr.isEmpty ? label_en : label_fr
-        case .en: label_en
+        case .ig:
+            return label_ig
+        case .fr:
+            return label_fr.isEmpty ? label_en : label_fr
+        case .en:
+            return label_en
         }
     }
 }
