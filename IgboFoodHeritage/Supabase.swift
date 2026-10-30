@@ -2,7 +2,7 @@ import AuthenticationServices
 import CryptoKit
 import Foundation
 import Security
-import UIKit
+@preconcurrency import UIKit
 
 struct SupabaseConfig {
     let url: URL
@@ -75,19 +75,15 @@ enum SupabaseError: LocalizedError {
 }
 
 @MainActor
-final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProviding {
+final class SupabaseClient {
     let config: SupabaseConfig
     var session: AuthSession?
     private var webSession: ASWebAuthenticationSession?
+    private let presenter = WebAuthPresenter()
 
     init(config: SupabaseConfig, session: AuthSession?) {
         self.config = config
         self.session = session
-    }
-
-    nonisolated func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-        return scenes.flatMap(\.windows).first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
 
     func signIn(email: String, password: String) async throws -> AuthSession {
@@ -178,7 +174,7 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
                 }
                 continuation.resume(returning: code)
             }
-            session.presentationContextProvider = self
+            session.presentationContextProvider = presenter
             session.prefersEphemeralWebBrowserSession = false
             webSession = session
             session.start()
@@ -450,6 +446,13 @@ final class SupabaseClient: NSObject, ASWebAuthenticationPresentationContextProv
     nonisolated private static func challenge(for verifier: String) -> String {
         let digest = SHA256.hash(data: Data(verifier.utf8))
         return Data(digest).base64URL
+    }
+}
+
+private final class WebAuthPresenter: NSObject, ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        return scenes.flatMap(\.windows).first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
 }
 
