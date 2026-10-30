@@ -17,6 +17,9 @@ final class AppModel: ObservableObject {
 
     let speaker = Speaker()
     let supabaseEnabled: Bool
+#if !targetEnvironment(simulator)
+    private let impact = UIImpactFeedbackGenerator(style: .light)
+#endif
     private let client: SupabaseClient?
     private let featuredId: String?
     private let settingsKey = "afrobiome.app-settings-v1"
@@ -125,7 +128,9 @@ final class AppModel: ObservableObject {
     }
 
     func haptic() {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+#if !targetEnvironment(simulator)
+        impact.impactOccurred()
+#endif
     }
 
     func signIn(email: String, password: String) async throws {
