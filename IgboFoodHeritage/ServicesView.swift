@@ -6,7 +6,10 @@ struct ServicesView: View {
     @EnvironmentObject private var model: AppModel
     @Environment(\.palette) private var colors
     @State private var mode = "list"
-    @State private var position: MapCameraPosition = .automatic
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 42.9849, longitude: -81.2453),
+        span: MKCoordinateSpan(latitudeDelta: 0.14, longitudeDelta: 0.18)
+    )
 
     var body: some View {
         ScrollView {
@@ -20,17 +23,15 @@ struct ServicesView: View {
                 .padding(.vertical, 4)
 
                 if mode == "map" {
-                    Map(position: $position) {
-                        ForEach(model.services.filter(\.hasCoordinates)) { item in
-                            Marker(item.name, coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
-                        }
+                    Map(coordinateRegion: $region, annotationItems: model.services.filter(\.hasCoordinates)) { item in
+                        MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
                     }
                     .frame(height: 280)
                     .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                     .accessibilityLabel(model.t("mapView"))
-                    .onAppear { position = fit(model.services) }
-                    .onChange(of: model.services.map(\.id)) { _, _ in
-                        position = fit(model.services)
+                    .onAppear { region = fittedRegion(model.services) }
+                    .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
+                        region = fittedRegion(model.services)
                     }
                 }
 
@@ -104,13 +105,13 @@ struct ServicesView: View {
         }
     }
 
-    private func fit(_ items: [ServiceItem]) -> MapCameraPosition {
+    private func fittedRegion(_ items: [ServiceItem]) -> MKCoordinateRegion {
         let valid = items.filter(\.hasCoordinates)
         guard !valid.isEmpty else {
-            return .region(MKCoordinateRegion(
+            return MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 42.9849, longitude: -81.2453),
                 span: MKCoordinateSpan(latitudeDelta: 0.14, longitudeDelta: 0.18)
-            ))
+            )
         }
         let lats = valid.map(\.lat)
         let lngs = valid.map(\.lng)
@@ -118,13 +119,13 @@ struct ServicesView: View {
         let maxLat = lats.max() ?? 42.9849
         let minLng = lngs.min() ?? -81.2453
         let maxLng = lngs.max() ?? -81.2453
-        return .region(MKCoordinateRegion(
+        return MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLng + maxLng) / 2),
             span: MKCoordinateSpan(
                 latitudeDelta: max((maxLat - minLat) * 1.5, 0.06),
                 longitudeDelta: max((maxLng - minLng) * 1.5, 0.06)
             )
-        ))
+        )
     }
 
     private func openMaps(_ item: ServiceItem) {

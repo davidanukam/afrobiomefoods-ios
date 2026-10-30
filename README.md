@@ -7,11 +7,10 @@ This folder is an Xcode project. iPhone apps are built on a Mac.
 ## Run it on your iPhone
 
 1. Copy this folder to a Mac, or open it from a shared drive the Mac can see.
-2. Install Xcode 16 or newer from the Mac App Store.
-3. Open `IgboFoodHeritage.xcodeproj`.
-4. Connect the iPhone with a cable and tap Trust on the phone.
-5. In Xcode, select the IgboFoodHeritage target, open Signing & Capabilities, and choose your Apple ID team. A free Apple ID can install the app for about 7 days.
-6. Choose your iPhone in the run destination menu, then press Run.
+2. Open `IgboFoodHeritage.xcodeproj` in Xcode 14.2 or newer.
+3. Connect the iPhone with a cable and tap Trust on the phone. The phone needs iOS 16 or newer. Xcode 14.2 can install onto an iOS 16 iPhone. If the phone is on iOS 17 or later, use the iOS 16 simulator that comes with Xcode, or install a newer Xcode.
+4. Select the IgboFoodHeritage target, open Signing & Capabilities, and choose your Apple ID team. A free Apple ID can install the app for about 7 days.
+5. Choose your iPhone, or an iPhone simulator, in the run destination menu, then press Run.
 
 The first launch asks for a language, text size, and guest or account sign-in. Guest mode opens the full local app.
 

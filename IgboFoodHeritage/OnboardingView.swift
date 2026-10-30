@@ -169,7 +169,7 @@ private struct SignInStep: View {
         .toolbarBackground(colors.cream, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .noticeAlert($notice)
-        .onChange(of: model.session?.userId) { _, userId in
+        .onChange(of: model.session?.userId) { userId in
             if userId != nil {
                 model.completeOnboarding(guest: false)
             }

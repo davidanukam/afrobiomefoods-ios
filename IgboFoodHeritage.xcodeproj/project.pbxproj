@@ -3,33 +3,250 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 56;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		4AEB273A43C55E70B80AE8AF /* AdminRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C2DAC16CA85DC84D87DBD /* AdminRecipesView.swift */; };
+		DF56C041B5B169CB5316A865 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B533408C9FC2037516F77B2 /* AppModel.swift */; };
+		444A64D6FC26E15409D803EB /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBE34CFD46F53747EE4053 /* CommunityView.swift */; };
+		8F1D42CC6F0BC9289FB11AFA /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48895204EB57FFBFCB0957 /* Components.swift */; };
+		35A476F61018C20AAAA87B96 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AA2FA982C28B7CB2B62A9 /* HomeView.swift */; };
+		3F124ACCF1FBF28A2488E5F6 /* IgboFoodHeritageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DE3085B04347E49E4269F /* IgboFoodHeritageApp.swift */; };
+		7C431ACC090955ADBAFD7E13 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD81CAA026D1AFFF685F03 /* Models.swift */; };
+		3C54D70462D8734689419160 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95E128EC4DB2CF013B39B6 /* NutritionView.swift */; };
+		0049B62AC64485F193BD2367 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0A47791717446AF3A4FB1 /* OnboardingView.swift */; };
+		EE45F87993546D8CDBF30240 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714018D8EB14817FFD52E70D /* RecipesView.swift */; };
+		4159223716956B83BC86301A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD14793CDFF01B03D76F5AF /* RootView.swift */; };
+		A360FF9ABB25B4B022262760 /* ServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2B8AEFC90D21C1C706641 /* ServicesView.swift */; };
+		01D158D6A4D2907ABA64EAD9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C38883935F705E389B088B /* SettingsView.swift */; };
+		0C3336E67908F35DA13DE94C /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F65E82B41D1671BA0BB5C8 /* Speaker.swift */; };
+		CC597C013639A5CBDA410231 /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A941422070E17AEF2BBF7BA6 /* Supabase.swift */; };
+		25A872378FDAA294496C57A1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC6A9D3DC8AFB970394D07 /* Theme.swift */; };
+		ED3F435A74FFD5F66402E4F9 /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B27256D14A0C7C179C0D6EA /* catalog.json */; };
+		F9C149EEBFED3A476F136803 /* abacha-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 891C3AA92B1279EA3D9EB0BB /* abacha-final.jpg */; };
+		2A071606D79F4DB3C8CB4D1E /* abacha-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEEA3926DE53E1F7AFEEC10 /* abacha-ingredient.png */; };
+		DAB3A7171B5169C5C42F23B0 /* agidi-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34F0FC8029AEC24C1D0E4FB5 /* agidi-final.jpg */; };
+		5EF10414BD11D08E9FFB26D1 /* agidi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A5EB558C15CECEA0C244700 /* agidi-ingredient.jpg */; };
+		B3794921E6DF5C3E04A81DF4 /* akamu-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 790ACE5BCE869F20BFD2B7F3 /* akamu-final.png */; };
+		74239A1FC1AD678E92B434B9 /* akamu-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 00DD14DEA1B50AFE423D01C1 /* akamu-ingredient.jpg */; };
+		7CE96E923B78EFB8F3631F72 /* akara-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 2842AED7C325FA3BAE2A55FC /* akara-final.png */; };
+		E47CB9F2817B0DAA70DBE563 /* akara-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D091D6A9D1CBA17B271F3F4A /* akara-ingredient.jpg */; };
+		38EE1F44BD453E258179A19D /* akidi-porridge-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D45DA2DD535C5EB5BD62958E /* akidi-porridge-final.jpg */; };
+		8C124B2108B603FD22DED2C2 /* akidi-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35281B2EA3B550917DC1A6FF /* akidi-porridge-ingredient.jpg */; };
+		B2EFF288A69EED6C0DE64480 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C26D479E12167D3FACE085 /* app-icon.png */; };
+		600664B532D474EE3065178F /* beans-plantain-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B436E8446440D42BE2F830F /* beans-plantain-final.png */; };
+		20F6C3FE81569D7C9EBDD18D /* beans-plantain-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B2528E0C43A1C34BFC9777 /* beans-plantain-ingredient.png */; };
+		C4071EE292013AC681A823C2 /* beans-porridge-final.png in Resources */ = {isa = PBXBuildFile; fileRef = EFDE286558A2678DF7A33FAD /* beans-porridge-final.png */; };
+		918C5A533F9E63292774C0EA /* beans-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DED84AA81A7596A08360B79C /* beans-porridge-ingredient.jpg */; };
+		4FA1CC28E2E952D0697692F3 /* buns-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA43C8229D640FAB92D00920 /* buns-final.jpg */; };
+		0BBF7E72D3470DCF3939C956 /* buns-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 674E02EDBF66DC35EF2BCA24 /* buns-ingredient.png */; };
+		3BE8F7CAD8BB3E0CFEC4A1DA /* chin-chin-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0F3AA988FE374FEA81ADB520 /* chin-chin-final.jpeg */; };
+		0704BF4805EB5C268B2365B7 /* chin-chin-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BEF6B431D2FC504C5020723 /* chin-chin-ingredient.jpg */; };
+		70DC66697E4DB2F8E146C40E /* cocoyam-porridge-final.png in Resources */ = {isa = PBXBuildFile; fileRef = F93150FCD8FA70BCC22FF77E /* cocoyam-porridge-final.png */; };
+		B44E5937948A8B0EF7370993 /* cocoyam-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9D4A7D027EDB7CFE3200812 /* cocoyam-porridge-ingredient.jpg */; };
+		CB7CA4B8F5015F8F536FE081 /* corn-porridge-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9BE98D55324447EF7C8CE459 /* corn-porridge-final.jpeg */; };
+		DA92F67F918F3D3C42D701E0 /* corn-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B1832A2E56DB1F3D6F569B0 /* corn-porridge-ingredient.jpg */; };
+		27339760B575CFE47DB21A39 /* doughnuts-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6FA7DFEF8635D0D738AA2156 /* doughnuts-final.jpeg */; };
+		0E3FF5263339F666552C3AD3 /* doughnuts-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD86F2AF012DA081B60CF75 /* doughnuts-ingredient.png */; };
+		4FAF245FB6AADDF811C5899D /* egg-roll-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 695E82AF1D9932BB4932AE2E /* egg-roll-final.jpg */; };
+		96302B7D93FF7B0E80619B38 /* egg-roll-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BF96266E04768B61C85418 /* egg-roll-ingredient.png */; };
+		3C0B20730F28882FFC8251BA /* fish-pepper-soup-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889FD4ECC0B0AF5CC6E8A732 /* fish-pepper-soup-final.jpg */; };
+		F853B82F771505F9987B59D5 /* fish-pepper-soup-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5800DB5652F816129D646DAB /* fish-pepper-soup-ingredient.png */; };
+		DF2FB61B9F51B335E0E34366 /* fish-pie-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34090E55A162716341395352 /* fish-pie-final.jpg */; };
+		E26EDA8EEC18908ED92F2537 /* fish-pie-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F3B5404582EE25A33F5FA67 /* fish-pie-ingredient.png */; };
+		7BA1B1BC2F25AEAB865EDC78 /* foi-foi-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8622A2A10B0EAED166112259 /* foi-foi-final.jpg */; };
+		8AF6D2142F7665A139C33F8B /* foi-foi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87934C8585DCC2B2C78C481C /* foi-foi-ingredient.jpg */; };
+		94436DFEC2AF81ACA4604B5C /* goat-pepper-soup-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A022066ACB8F568176FE0413 /* goat-pepper-soup-final.jpeg */; };
+		2F940D6F0CC4B96FD0E52391 /* goat-pepper-soup-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E0CD57921BBA5BE4C877FCCB /* goat-pepper-soup-ingredient.jpg */; };
+		F742F8BFC401637F5A31A202 /* ikpo-oka-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF2F28A1409D677B627340FC /* ikpo-oka-final.jpg */; };
+		E45A93C4D5D6B389F911DF96 /* ikpo-oka-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ABDCC03916F4400C67A00C /* ikpo-oka-ingredient.png */; };
+		57A305F4884E5AD8C0E08E90 /* isi-ewu-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56EDFBDA1CB868C1B763C169 /* isi-ewu-final.jpg */; };
+		41BE37C03C0F9C8BC8A8E7EA /* isi-ewu-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C44A84030E2E1BB7964349C5 /* isi-ewu-ingredient.jpg */; };
+		AB1F6623C54E23DE5B56882D /* ji-akwukwo-nri-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66CE519F9D400C9BB51DF952 /* ji-akwukwo-nri-final.jpg */; };
+		47A27FBC225241FA73AE40F6 /* ji-akwukwo-nri-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 70384FF2EF41B2CCE5258A0A /* ji-akwukwo-nri-ingredient.png */; };
+		E9280756C114655008D7074F /* jollof-rice-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6ECA198B1A2B1BEE55CDCB02 /* jollof-rice-final.jpg */; };
+		CE544A331666949D572553C3 /* jollof-rice-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D1088A09A73F7D775FE5244 /* jollof-rice-ingredient.jpg */; };
+		36D157F19580CF5343CE2071 /* meat-pie-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B796A62A62C3F76F3A66A /* meat-pie-final.jpg */; };
+		8C675D052569AC70B7D69A31 /* meat-pie-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F03D7BF5B7CF67FDD6C0854 /* meat-pie-ingredient.png */; };
+		6DF1C80A3C9870F4FBA17687 /* mkporoshi-oka-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91B1D63D6726C5A157964427 /* mkporoshi-oka-final.jpg */; };
+		68013BBC8B6DC3E5484268C7 /* mkporoshi-oka-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3EABDE0309989D88ED06A849 /* mkporoshi-oka-ingredient.jpg */; };
+		4E81F57D568F7507A0A147CA /* moi-moi-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 01DB1BA4E67A7EF3844AF97B /* moi-moi-final.png */; };
+		2B3BEA09F18C31C8C6F79C7D /* moi-moi-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 828EDB27020DB6EA664064ED /* moi-moi-ingredient.png */; };
+		D3EC305D5C32AD0BED720717 /* nkwobi-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F22E67DCE8C1A169CE2C8493 /* nkwobi-final.jpg */; };
+		3FD4576537234AB10D96EA37 /* nkwobi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79B3D51D8F1D950366D7A073 /* nkwobi-ingredient.jpg */; };
+		99463F769A6EC6528BDBB7EC /* ofe-achara-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2215AD496DDE336D49821D28 /* ofe-achara-final.jpg */; };
+		A84022F112E7C6C78288A73E /* ofe-achara-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FCCA3B8CA175434E51D57FD /* ofe-achara-ingredient.jpg */; };
+		466E6017F9384B6F0B0041C1 /* ofe-achi-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C0375FB21AC42BBCAA1826 /* ofe-achi-final.png */; };
+		B9C2A6ED8F80904D3ABEF44F /* ofe-achi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 486FDE6AA9CC594073D81811 /* ofe-achi-ingredient.jpg */; };
+		5D29C736C3C7F5768F67EC8C /* ofe-ahihara-final.png in Resources */ = {isa = PBXBuildFile; fileRef = EABCF804020937CDE0B1E9E2 /* ofe-ahihara-final.png */; };
+		CABEC3234CBF699B9FE28CE5 /* ofe-ahihara-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEEDF67F95FD38C79B8288CF /* ofe-ahihara-ingredient.jpg */; };
+		D38609C545EB363875CECDF7 /* ofe-akwu-final.png in Resources */ = {isa = PBXBuildFile; fileRef = AF6C0523A2F3664CD9A40F80 /* ofe-akwu-final.png */; };
+		0C252E9572E23369D4ACDD9B /* ofe-akwu-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22697138D6D140E431E1FAEF /* ofe-akwu-ingredient.jpg */; };
+		EA326E6217600B95DF998A87 /* ofe-egusi-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9D09FF1BFBA5F1A4EF7B98FC /* ofe-egusi-final.jpeg */; };
+		DE3449E782E7C6D13F5FC0DF /* ofe-egusi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 719706FAE2837ABD6F22AB52 /* ofe-egusi-ingredient.jpg */; };
+		8E0BD50194D24A44FCB490A1 /* ofe-green-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 423FF66F1199C4378047DE3C /* ofe-green-final.png */; };
+		2DEE088F6C4D9368986B6177 /* ofe-green-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 006BEEC0675E7E65CDB84502 /* ofe-green-ingredient.png */; };
+		695EB6AFFD23FA3AC06018CE /* ofe-groundnut-final.png in Resources */ = {isa = PBXBuildFile; fileRef = A9772B616566B379AF96D9F4 /* ofe-groundnut-final.png */; };
+		66826E038D60DF5913A9A34C /* ofe-groundnut-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9599EA10383971F08C5CFE /* ofe-groundnut-ingredient.png */; };
+		5BA682E9CE1FE53C733E1E65 /* ofe-nsala-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AA7E4EC09E3A082BDD9D9D3 /* ofe-nsala-final.png */; };
+		123FF82C06AE5A2B62A97E8F /* ofe-nsala-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = D34350D5CBE0082291F7EF4D /* ofe-nsala-ingredient.png */; };
+		EF4D827585A1C79FCA835D2F /* ofe-ogbono-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 961D69B49A8D8244BD10F8AD /* ofe-ogbono-final.jpeg */; };
+		8DB8FDD3D3E09242E3667C78 /* ofe-ogbono-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2832B3D1C896BF651206B6CB /* ofe-ogbono-ingredient.jpg */; };
+		B38BCA9F48C042EB9DE13F1D /* ofe-oha-final.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22D977131E15D761C20D1C /* ofe-oha-final.png */; };
+		43663F70FC8BE57BDF32945D /* ofe-oha-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E60B1549C4D1A3B625519D /* ofe-oha-ingredient.png */; };
+		C77675A03D9A049C9EB525EF /* ofe-ojii-final.png in Resources */ = {isa = PBXBuildFile; fileRef = AEC5320D4B22CFB77B618C61 /* ofe-ojii-final.png */; };
+		C4CB2523FC4257D971D0496E /* ofe-ojii-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = BF3BE49CA806AF669DA5CADF /* ofe-ojii-ingredient.png */; };
+		0A31E48C3C14EF6CDCE62A2A /* ofe-okazi-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758BC0BDF547817AD33CCF49 /* ofe-okazi-final.jpg */; };
+		9BAF94B5C7570BFFD4A53E3D /* ofe-okazi-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11755A09AF52967D03200C71 /* ofe-okazi-ingredient.jpg */; };
+		1625073CC6D2D6E462F71965 /* ofe-okra-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FB9D99A6001A737353609B1 /* ofe-okra-final.png */; };
+		926525499558148D72125C1C /* ofe-okra-ingredient.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A8B1C275B42803F946BDD0D /* ofe-okra-ingredient.jpeg */; };
+		8CB7D6308C736DF8980B1277 /* ofe-onugbu-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 49E132003A674A9DDE68B7C1 /* ofe-onugbu-final.jpeg */; };
+		2F083EF8DBEFFE01908EAC20 /* ofe-onugbu-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5346FB4C9DBC711A39346DC /* ofe-onugbu-ingredient.jpg */; };
+		B1115DD8F6BD7050F0740DAE /* ofe-owerri-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80341834CF8DF2C11C321456 /* ofe-owerri-final.jpg */; };
+		C7091B336848EA86A40DA4CF /* ofe-owerri-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB191C65C40A6C7BFB2EE7B /* ofe-owerri-ingredient.png */; };
+		ADC332DFE2A1ABC763AA978F /* ofe-ugba-final.png in Resources */ = {isa = PBXBuildFile; fileRef = B98AE1F825AA7863E84E7812 /* ofe-ugba-final.png */; };
+		0D60CE4946F4AD33E03EB611 /* ofe-ugba-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A752C8E0E4C17843732E116 /* ofe-ugba-ingredient.png */; };
+		2EB01853CDF3444762C32EE6 /* ofe-ukpo-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8C4FD5414E11A06B3D943636 /* ofe-ukpo-final.jpeg */; };
+		D0A1BAED896811AE9764D0BB /* ofe-ukpo-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC893A4E9EF19EBA3794E839 /* ofe-ukpo-ingredient.jpg */; };
+		6DE2E1355194F18BF87D4A35 /* ofe-uziza-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7427313E2F80C1A5B49A8A6 /* ofe-uziza-final.jpg */; };
+		26A875466B79A14EA548B668 /* ofe-uziza-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB349FFDDB26B9463DF1D71C /* ofe-uziza-ingredient.jpg */; };
+		4D72E87531165E911BE86C21 /* okpa-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E89D7D8187CD2778BB6BD7 /* okpa-final.jpg */; };
+		1AE6E65DBEE2D2D06E32AE44 /* okpa-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2387A3D961DA942076047E69 /* okpa-ingredient.png */; };
+		28F9F21F82CDE7FFAA93F342 /* plantain-porridge-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 165363542EA39B59A83DB521 /* plantain-porridge-final.jpg */; };
+		D134A0E795B856D1123BE1A2 /* plantain-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3627CC342F3E065B643FA7F /* plantain-porridge-ingredient.jpg */; };
+		1959F9B5E69F3F7586D83168 /* puff-puff-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2304C190D8476BBDAB1882B5 /* puff-puff-final.jpg */; };
+		432D04B2EC28BA26DBA44D69 /* puff-puff-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FE43E3A0F38C472129F82F /* puff-puff-ingredient.png */; };
+		3F3B4362FCA717C6D76D84AE /* ukwa-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD066B0E67E93CF21D21393C /* ukwa-final.jpg */; };
+		A5AFB4521ABD983B307AB4F9 /* ukwa-ingredient.png in Resources */ = {isa = PBXBuildFile; fileRef = C92C458ACBCFD49108EA872B /* ukwa-ingredient.png */; };
+		9324E4A887D9AA8585DC8680 /* yam-pepper-soup-final.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7733D6C6D535A0AEC1218C36 /* yam-pepper-soup-final.jpeg */; };
+		238A8830B75A355C869BF599 /* yam-pepper-soup-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF0C01D02F68E8902AF5C81B /* yam-pepper-soup-ingredient.jpg */; };
+		5A25282D80175617E96A0B29 /* yam-porridge-final.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 728F97E4F7F267BBC273552D /* yam-porridge-final.jpg */; };
+		0A9CC6D952CD6739979C8891 /* yam-porridge-ingredient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10F627CAFF7552326A5D23B8 /* yam-porridge-ingredient.jpg */; };
+		843860B31664B56038BE66FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5011910AD5A62185C4284EF4 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A10000000000000000000002 /* IgboFoodHeritage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgboFoodHeritage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E3EF12FEACA1BA79AACA18F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD2C2DAC16CA85DC84D87DBD /* AdminRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRecipesView.swift; sourceTree = "<group>"; };
+		6B533408C9FC2037516F77B2 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		C9BBE34CFD46F53747EE4053 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		AA48895204EB57FFBFCB0957 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		4A8AA2FA982C28B7CB2B62A9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		343DE3085B04347E49E4269F /* IgboFoodHeritageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgboFoodHeritageApp.swift; sourceTree = "<group>"; };
+		77BD81CAA026D1AFFF685F03 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		2F95E128EC4DB2CF013B39B6 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		80D0A47791717446AF3A4FB1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		714018D8EB14817FFD52E70D /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		2CD14793CDFF01B03D76F5AF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		10D2B8AEFC90D21C1C706641 /* ServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesView.swift; sourceTree = "<group>"; };
+		85C38883935F705E389B088B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		56F65E82B41D1671BA0BB5C8 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		A941422070E17AEF2BBF7BA6 /* Supabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supabase.swift; sourceTree = "<group>"; };
+		48AC6A9D3DC8AFB970394D07 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5B27256D14A0C7C179C0D6EA /* catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
+		891C3AA92B1279EA3D9EB0BB /* abacha-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abacha-final.jpg; sourceTree = "<group>"; };
+		DBEEA3926DE53E1F7AFEEC10 /* abacha-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abacha-ingredient.png; sourceTree = "<group>"; };
+		34F0FC8029AEC24C1D0E4FB5 /* agidi-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = agidi-final.jpg; sourceTree = "<group>"; };
+		6A5EB558C15CECEA0C244700 /* agidi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = agidi-ingredient.jpg; sourceTree = "<group>"; };
+		790ACE5BCE869F20BFD2B7F3 /* akamu-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akamu-final.png; sourceTree = "<group>"; };
+		00DD14DEA1B50AFE423D01C1 /* akamu-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = akamu-ingredient.jpg; sourceTree = "<group>"; };
+		2842AED7C325FA3BAE2A55FC /* akara-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akara-final.png; sourceTree = "<group>"; };
+		D091D6A9D1CBA17B271F3F4A /* akara-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = akara-ingredient.jpg; sourceTree = "<group>"; };
+		D45DA2DD535C5EB5BD62958E /* akidi-porridge-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = akidi-porridge-final.jpg; sourceTree = "<group>"; };
+		35281B2EA3B550917DC1A6FF /* akidi-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = akidi-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		05C26D479E12167D3FACE085 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app-icon.png; sourceTree = "<group>"; };
+		9B436E8446440D42BE2F830F /* beans-plantain-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beans-plantain-final.png; sourceTree = "<group>"; };
+		18B2528E0C43A1C34BFC9777 /* beans-plantain-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beans-plantain-ingredient.png; sourceTree = "<group>"; };
+		EFDE286558A2678DF7A33FAD /* beans-porridge-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beans-porridge-final.png; sourceTree = "<group>"; };
+		DED84AA81A7596A08360B79C /* beans-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beans-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		EA43C8229D640FAB92D00920 /* buns-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buns-final.jpg; sourceTree = "<group>"; };
+		674E02EDBF66DC35EF2BCA24 /* buns-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buns-ingredient.png; sourceTree = "<group>"; };
+		0F3AA988FE374FEA81ADB520 /* chin-chin-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chin-chin-final.jpeg; sourceTree = "<group>"; };
+		6BEF6B431D2FC504C5020723 /* chin-chin-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chin-chin-ingredient.jpg; sourceTree = "<group>"; };
+		F93150FCD8FA70BCC22FF77E /* cocoyam-porridge-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cocoyam-porridge-final.png; sourceTree = "<group>"; };
+		F9D4A7D027EDB7CFE3200812 /* cocoyam-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cocoyam-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		9BE98D55324447EF7C8CE459 /* corn-porridge-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = corn-porridge-final.jpeg; sourceTree = "<group>"; };
+		7B1832A2E56DB1F3D6F569B0 /* corn-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = corn-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		6FA7DFEF8635D0D738AA2156 /* doughnuts-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doughnuts-final.jpeg; sourceTree = "<group>"; };
+		9AD86F2AF012DA081B60CF75 /* doughnuts-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doughnuts-ingredient.png; sourceTree = "<group>"; };
+		695E82AF1D9932BB4932AE2E /* egg-roll-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = egg-roll-final.jpg; sourceTree = "<group>"; };
+		96BF96266E04768B61C85418 /* egg-roll-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg-roll-ingredient.png; sourceTree = "<group>"; };
+		889FD4ECC0B0AF5CC6E8A732 /* fish-pepper-soup-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fish-pepper-soup-final.jpg; sourceTree = "<group>"; };
+		5800DB5652F816129D646DAB /* fish-pepper-soup-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish-pepper-soup-ingredient.png; sourceTree = "<group>"; };
+		34090E55A162716341395352 /* fish-pie-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fish-pie-final.jpg; sourceTree = "<group>"; };
+		5F3B5404582EE25A33F5FA67 /* fish-pie-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish-pie-ingredient.png; sourceTree = "<group>"; };
+		8622A2A10B0EAED166112259 /* foi-foi-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foi-foi-final.jpg; sourceTree = "<group>"; };
+		87934C8585DCC2B2C78C481C /* foi-foi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foi-foi-ingredient.jpg; sourceTree = "<group>"; };
+		A022066ACB8F568176FE0413 /* goat-pepper-soup-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = goat-pepper-soup-final.jpeg; sourceTree = "<group>"; };
+		E0CD57921BBA5BE4C877FCCB /* goat-pepper-soup-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = goat-pepper-soup-ingredient.jpg; sourceTree = "<group>"; };
+		DF2F28A1409D677B627340FC /* ikpo-oka-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ikpo-oka-final.jpg; sourceTree = "<group>"; };
+		D4ABDCC03916F4400C67A00C /* ikpo-oka-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ikpo-oka-ingredient.png; sourceTree = "<group>"; };
+		56EDFBDA1CB868C1B763C169 /* isi-ewu-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = isi-ewu-final.jpg; sourceTree = "<group>"; };
+		C44A84030E2E1BB7964349C5 /* isi-ewu-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = isi-ewu-ingredient.jpg; sourceTree = "<group>"; };
+		66CE519F9D400C9BB51DF952 /* ji-akwukwo-nri-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ji-akwukwo-nri-final.jpg; sourceTree = "<group>"; };
+		70384FF2EF41B2CCE5258A0A /* ji-akwukwo-nri-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ji-akwukwo-nri-ingredient.png; sourceTree = "<group>"; };
+		6ECA198B1A2B1BEE55CDCB02 /* jollof-rice-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jollof-rice-final.jpg; sourceTree = "<group>"; };
+		3D1088A09A73F7D775FE5244 /* jollof-rice-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jollof-rice-ingredient.jpg; sourceTree = "<group>"; };
+		9C4B796A62A62C3F76F3A66A /* meat-pie-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meat-pie-final.jpg; sourceTree = "<group>"; };
+		5F03D7BF5B7CF67FDD6C0854 /* meat-pie-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meat-pie-ingredient.png; sourceTree = "<group>"; };
+		91B1D63D6726C5A157964427 /* mkporoshi-oka-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mkporoshi-oka-final.jpg; sourceTree = "<group>"; };
+		3EABDE0309989D88ED06A849 /* mkporoshi-oka-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mkporoshi-oka-ingredient.jpg; sourceTree = "<group>"; };
+		01DB1BA4E67A7EF3844AF97B /* moi-moi-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moi-moi-final.png; sourceTree = "<group>"; };
+		828EDB27020DB6EA664064ED /* moi-moi-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moi-moi-ingredient.png; sourceTree = "<group>"; };
+		F22E67DCE8C1A169CE2C8493 /* nkwobi-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nkwobi-final.jpg; sourceTree = "<group>"; };
+		79B3D51D8F1D950366D7A073 /* nkwobi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nkwobi-ingredient.jpg; sourceTree = "<group>"; };
+		2215AD496DDE336D49821D28 /* ofe-achara-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-achara-final.jpg; sourceTree = "<group>"; };
+		2FCCA3B8CA175434E51D57FD /* ofe-achara-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-achara-ingredient.jpg; sourceTree = "<group>"; };
+		56C0375FB21AC42BBCAA1826 /* ofe-achi-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-achi-final.png; sourceTree = "<group>"; };
+		486FDE6AA9CC594073D81811 /* ofe-achi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-achi-ingredient.jpg; sourceTree = "<group>"; };
+		EABCF804020937CDE0B1E9E2 /* ofe-ahihara-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-ahihara-final.png; sourceTree = "<group>"; };
+		CEEDF67F95FD38C79B8288CF /* ofe-ahihara-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-ahihara-ingredient.jpg; sourceTree = "<group>"; };
+		AF6C0523A2F3664CD9A40F80 /* ofe-akwu-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-akwu-final.png; sourceTree = "<group>"; };
+		22697138D6D140E431E1FAEF /* ofe-akwu-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-akwu-ingredient.jpg; sourceTree = "<group>"; };
+		9D09FF1BFBA5F1A4EF7B98FC /* ofe-egusi-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-egusi-final.jpeg; sourceTree = "<group>"; };
+		719706FAE2837ABD6F22AB52 /* ofe-egusi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-egusi-ingredient.jpg; sourceTree = "<group>"; };
+		423FF66F1199C4378047DE3C /* ofe-green-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-green-final.png; sourceTree = "<group>"; };
+		006BEEC0675E7E65CDB84502 /* ofe-green-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-green-ingredient.png; sourceTree = "<group>"; };
+		A9772B616566B379AF96D9F4 /* ofe-groundnut-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-groundnut-final.png; sourceTree = "<group>"; };
+		6A9599EA10383971F08C5CFE /* ofe-groundnut-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-groundnut-ingredient.png; sourceTree = "<group>"; };
+		1AA7E4EC09E3A082BDD9D9D3 /* ofe-nsala-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-nsala-final.png; sourceTree = "<group>"; };
+		D34350D5CBE0082291F7EF4D /* ofe-nsala-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-nsala-ingredient.png; sourceTree = "<group>"; };
+		961D69B49A8D8244BD10F8AD /* ofe-ogbono-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-ogbono-final.jpeg; sourceTree = "<group>"; };
+		2832B3D1C896BF651206B6CB /* ofe-ogbono-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-ogbono-ingredient.jpg; sourceTree = "<group>"; };
+		FC22D977131E15D761C20D1C /* ofe-oha-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-oha-final.png; sourceTree = "<group>"; };
+		61E60B1549C4D1A3B625519D /* ofe-oha-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-oha-ingredient.png; sourceTree = "<group>"; };
+		AEC5320D4B22CFB77B618C61 /* ofe-ojii-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-ojii-final.png; sourceTree = "<group>"; };
+		BF3BE49CA806AF669DA5CADF /* ofe-ojii-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-ojii-ingredient.png; sourceTree = "<group>"; };
+		758BC0BDF547817AD33CCF49 /* ofe-okazi-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-okazi-final.jpg; sourceTree = "<group>"; };
+		11755A09AF52967D03200C71 /* ofe-okazi-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-okazi-ingredient.jpg; sourceTree = "<group>"; };
+		7FB9D99A6001A737353609B1 /* ofe-okra-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-okra-final.png; sourceTree = "<group>"; };
+		3A8B1C275B42803F946BDD0D /* ofe-okra-ingredient.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-okra-ingredient.jpeg; sourceTree = "<group>"; };
+		49E132003A674A9DDE68B7C1 /* ofe-onugbu-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-onugbu-final.jpeg; sourceTree = "<group>"; };
+		E5346FB4C9DBC711A39346DC /* ofe-onugbu-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-onugbu-ingredient.jpg; sourceTree = "<group>"; };
+		80341834CF8DF2C11C321456 /* ofe-owerri-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-owerri-final.jpg; sourceTree = "<group>"; };
+		5CB191C65C40A6C7BFB2EE7B /* ofe-owerri-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-owerri-ingredient.png; sourceTree = "<group>"; };
+		B98AE1F825AA7863E84E7812 /* ofe-ugba-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-ugba-final.png; sourceTree = "<group>"; };
+		5A752C8E0E4C17843732E116 /* ofe-ugba-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofe-ugba-ingredient.png; sourceTree = "<group>"; };
+		8C4FD5414E11A06B3D943636 /* ofe-ukpo-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-ukpo-final.jpeg; sourceTree = "<group>"; };
+		DC893A4E9EF19EBA3794E839 /* ofe-ukpo-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-ukpo-ingredient.jpg; sourceTree = "<group>"; };
+		D7427313E2F80C1A5B49A8A6 /* ofe-uziza-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-uziza-final.jpg; sourceTree = "<group>"; };
+		EB349FFDDB26B9463DF1D71C /* ofe-uziza-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ofe-uziza-ingredient.jpg; sourceTree = "<group>"; };
+		D2E89D7D8187CD2778BB6BD7 /* okpa-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = okpa-final.jpg; sourceTree = "<group>"; };
+		2387A3D961DA942076047E69 /* okpa-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = okpa-ingredient.png; sourceTree = "<group>"; };
+		165363542EA39B59A83DB521 /* plantain-porridge-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plantain-porridge-final.jpg; sourceTree = "<group>"; };
+		F3627CC342F3E065B643FA7F /* plantain-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plantain-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		2304C190D8476BBDAB1882B5 /* puff-puff-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = puff-puff-final.jpg; sourceTree = "<group>"; };
+		56FE43E3A0F38C472129F82F /* puff-puff-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puff-puff-ingredient.png; sourceTree = "<group>"; };
+		FD066B0E67E93CF21D21393C /* ukwa-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ukwa-final.jpg; sourceTree = "<group>"; };
+		C92C458ACBCFD49108EA872B /* ukwa-ingredient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ukwa-ingredient.png; sourceTree = "<group>"; };
+		7733D6C6D535A0AEC1218C36 /* yam-pepper-soup-final.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yam-pepper-soup-final.jpeg; sourceTree = "<group>"; };
+		DF0C01D02F68E8902AF5C81B /* yam-pepper-soup-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yam-pepper-soup-ingredient.jpg; sourceTree = "<group>"; };
+		728F97E4F7F267BBC273552D /* yam-porridge-final.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yam-porridge-final.jpg; sourceTree = "<group>"; };
+		10F627CAFF7552326A5D23B8 /* yam-porridge-ingredient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yam-porridge-ingredient.jpg; sourceTree = "<group>"; };
+		5011910AD5A62185C4284EF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A10000000000000000000008 /* Exceptions for "IgboFoodHeritage" folder in "IgboFoodHeritage" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = A10000000000000000000003 /* IgboFoodHeritage */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		A10000000000000000000001 /* IgboFoodHeritage */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A10000000000000000000008 /* Exceptions for "IgboFoodHeritage" folder in "IgboFoodHeritage" target */,
-			);
-			path = IgboFoodHeritage;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A1000000000000000000000C /* Frameworks */ = {
@@ -45,9 +262,150 @@
 		A1000000000000000000000A = {
 			isa = PBXGroup;
 			children = (
-				A10000000000000000000001 /* IgboFoodHeritage */,
+				A10000000000000000000011 /* IgboFoodHeritage */,
 				A1000000000000000000000B /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A10000000000000000000011 /* IgboFoodHeritage */ = {
+			isa = PBXGroup;
+			children = (
+				CD2C2DAC16CA85DC84D87DBD /* AdminRecipesView.swift */,
+				6B533408C9FC2037516F77B2 /* AppModel.swift */,
+				C9BBE34CFD46F53747EE4053 /* CommunityView.swift */,
+				AA48895204EB57FFBFCB0957 /* Components.swift */,
+				4A8AA2FA982C28B7CB2B62A9 /* HomeView.swift */,
+				343DE3085B04347E49E4269F /* IgboFoodHeritageApp.swift */,
+				77BD81CAA026D1AFFF685F03 /* Models.swift */,
+				2F95E128EC4DB2CF013B39B6 /* NutritionView.swift */,
+				80D0A47791717446AF3A4FB1 /* OnboardingView.swift */,
+				714018D8EB14817FFD52E70D /* RecipesView.swift */,
+				2CD14793CDFF01B03D76F5AF /* RootView.swift */,
+				10D2B8AEFC90D21C1C706641 /* ServicesView.swift */,
+				85C38883935F705E389B088B /* SettingsView.swift */,
+				56F65E82B41D1671BA0BB5C8 /* Speaker.swift */,
+				A941422070E17AEF2BBF7BA6 /* Supabase.swift */,
+				48AC6A9D3DC8AFB970394D07 /* Theme.swift */,
+				0E3EF12FEACA1BA79AACA18F /* Info.plist */,
+				5011910AD5A62185C4284EF4 /* Assets.xcassets */,
+				A10000000000000000000012 /* Resources */,
+			);
+			path = IgboFoodHeritage;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000012 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B27256D14A0C7C179C0D6EA /* catalog.json */,
+				A10000000000000000000013 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000013 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				891C3AA92B1279EA3D9EB0BB /* abacha-final.jpg */,
+				DBEEA3926DE53E1F7AFEEC10 /* abacha-ingredient.png */,
+				34F0FC8029AEC24C1D0E4FB5 /* agidi-final.jpg */,
+				6A5EB558C15CECEA0C244700 /* agidi-ingredient.jpg */,
+				790ACE5BCE869F20BFD2B7F3 /* akamu-final.png */,
+				00DD14DEA1B50AFE423D01C1 /* akamu-ingredient.jpg */,
+				2842AED7C325FA3BAE2A55FC /* akara-final.png */,
+				D091D6A9D1CBA17B271F3F4A /* akara-ingredient.jpg */,
+				D45DA2DD535C5EB5BD62958E /* akidi-porridge-final.jpg */,
+				35281B2EA3B550917DC1A6FF /* akidi-porridge-ingredient.jpg */,
+				05C26D479E12167D3FACE085 /* app-icon.png */,
+				9B436E8446440D42BE2F830F /* beans-plantain-final.png */,
+				18B2528E0C43A1C34BFC9777 /* beans-plantain-ingredient.png */,
+				EFDE286558A2678DF7A33FAD /* beans-porridge-final.png */,
+				DED84AA81A7596A08360B79C /* beans-porridge-ingredient.jpg */,
+				EA43C8229D640FAB92D00920 /* buns-final.jpg */,
+				674E02EDBF66DC35EF2BCA24 /* buns-ingredient.png */,
+				0F3AA988FE374FEA81ADB520 /* chin-chin-final.jpeg */,
+				6BEF6B431D2FC504C5020723 /* chin-chin-ingredient.jpg */,
+				F93150FCD8FA70BCC22FF77E /* cocoyam-porridge-final.png */,
+				F9D4A7D027EDB7CFE3200812 /* cocoyam-porridge-ingredient.jpg */,
+				9BE98D55324447EF7C8CE459 /* corn-porridge-final.jpeg */,
+				7B1832A2E56DB1F3D6F569B0 /* corn-porridge-ingredient.jpg */,
+				6FA7DFEF8635D0D738AA2156 /* doughnuts-final.jpeg */,
+				9AD86F2AF012DA081B60CF75 /* doughnuts-ingredient.png */,
+				695E82AF1D9932BB4932AE2E /* egg-roll-final.jpg */,
+				96BF96266E04768B61C85418 /* egg-roll-ingredient.png */,
+				889FD4ECC0B0AF5CC6E8A732 /* fish-pepper-soup-final.jpg */,
+				5800DB5652F816129D646DAB /* fish-pepper-soup-ingredient.png */,
+				34090E55A162716341395352 /* fish-pie-final.jpg */,
+				5F3B5404582EE25A33F5FA67 /* fish-pie-ingredient.png */,
+				8622A2A10B0EAED166112259 /* foi-foi-final.jpg */,
+				87934C8585DCC2B2C78C481C /* foi-foi-ingredient.jpg */,
+				A022066ACB8F568176FE0413 /* goat-pepper-soup-final.jpeg */,
+				E0CD57921BBA5BE4C877FCCB /* goat-pepper-soup-ingredient.jpg */,
+				DF2F28A1409D677B627340FC /* ikpo-oka-final.jpg */,
+				D4ABDCC03916F4400C67A00C /* ikpo-oka-ingredient.png */,
+				56EDFBDA1CB868C1B763C169 /* isi-ewu-final.jpg */,
+				C44A84030E2E1BB7964349C5 /* isi-ewu-ingredient.jpg */,
+				66CE519F9D400C9BB51DF952 /* ji-akwukwo-nri-final.jpg */,
+				70384FF2EF41B2CCE5258A0A /* ji-akwukwo-nri-ingredient.png */,
+				6ECA198B1A2B1BEE55CDCB02 /* jollof-rice-final.jpg */,
+				3D1088A09A73F7D775FE5244 /* jollof-rice-ingredient.jpg */,
+				9C4B796A62A62C3F76F3A66A /* meat-pie-final.jpg */,
+				5F03D7BF5B7CF67FDD6C0854 /* meat-pie-ingredient.png */,
+				91B1D63D6726C5A157964427 /* mkporoshi-oka-final.jpg */,
+				3EABDE0309989D88ED06A849 /* mkporoshi-oka-ingredient.jpg */,
+				01DB1BA4E67A7EF3844AF97B /* moi-moi-final.png */,
+				828EDB27020DB6EA664064ED /* moi-moi-ingredient.png */,
+				F22E67DCE8C1A169CE2C8493 /* nkwobi-final.jpg */,
+				79B3D51D8F1D950366D7A073 /* nkwobi-ingredient.jpg */,
+				2215AD496DDE336D49821D28 /* ofe-achara-final.jpg */,
+				2FCCA3B8CA175434E51D57FD /* ofe-achara-ingredient.jpg */,
+				56C0375FB21AC42BBCAA1826 /* ofe-achi-final.png */,
+				486FDE6AA9CC594073D81811 /* ofe-achi-ingredient.jpg */,
+				EABCF804020937CDE0B1E9E2 /* ofe-ahihara-final.png */,
+				CEEDF67F95FD38C79B8288CF /* ofe-ahihara-ingredient.jpg */,
+				AF6C0523A2F3664CD9A40F80 /* ofe-akwu-final.png */,
+				22697138D6D140E431E1FAEF /* ofe-akwu-ingredient.jpg */,
+				9D09FF1BFBA5F1A4EF7B98FC /* ofe-egusi-final.jpeg */,
+				719706FAE2837ABD6F22AB52 /* ofe-egusi-ingredient.jpg */,
+				423FF66F1199C4378047DE3C /* ofe-green-final.png */,
+				006BEEC0675E7E65CDB84502 /* ofe-green-ingredient.png */,
+				A9772B616566B379AF96D9F4 /* ofe-groundnut-final.png */,
+				6A9599EA10383971F08C5CFE /* ofe-groundnut-ingredient.png */,
+				1AA7E4EC09E3A082BDD9D9D3 /* ofe-nsala-final.png */,
+				D34350D5CBE0082291F7EF4D /* ofe-nsala-ingredient.png */,
+				961D69B49A8D8244BD10F8AD /* ofe-ogbono-final.jpeg */,
+				2832B3D1C896BF651206B6CB /* ofe-ogbono-ingredient.jpg */,
+				FC22D977131E15D761C20D1C /* ofe-oha-final.png */,
+				61E60B1549C4D1A3B625519D /* ofe-oha-ingredient.png */,
+				AEC5320D4B22CFB77B618C61 /* ofe-ojii-final.png */,
+				BF3BE49CA806AF669DA5CADF /* ofe-ojii-ingredient.png */,
+				758BC0BDF547817AD33CCF49 /* ofe-okazi-final.jpg */,
+				11755A09AF52967D03200C71 /* ofe-okazi-ingredient.jpg */,
+				7FB9D99A6001A737353609B1 /* ofe-okra-final.png */,
+				3A8B1C275B42803F946BDD0D /* ofe-okra-ingredient.jpeg */,
+				49E132003A674A9DDE68B7C1 /* ofe-onugbu-final.jpeg */,
+				E5346FB4C9DBC711A39346DC /* ofe-onugbu-ingredient.jpg */,
+				80341834CF8DF2C11C321456 /* ofe-owerri-final.jpg */,
+				5CB191C65C40A6C7BFB2EE7B /* ofe-owerri-ingredient.png */,
+				B98AE1F825AA7863E84E7812 /* ofe-ugba-final.png */,
+				5A752C8E0E4C17843732E116 /* ofe-ugba-ingredient.png */,
+				8C4FD5414E11A06B3D943636 /* ofe-ukpo-final.jpeg */,
+				DC893A4E9EF19EBA3794E839 /* ofe-ukpo-ingredient.jpg */,
+				D7427313E2F80C1A5B49A8A6 /* ofe-uziza-final.jpg */,
+				EB349FFDDB26B9463DF1D71C /* ofe-uziza-ingredient.jpg */,
+				D2E89D7D8187CD2778BB6BD7 /* okpa-final.jpg */,
+				2387A3D961DA942076047E69 /* okpa-ingredient.png */,
+				165363542EA39B59A83DB521 /* plantain-porridge-final.jpg */,
+				F3627CC342F3E065B643FA7F /* plantain-porridge-ingredient.jpg */,
+				2304C190D8476BBDAB1882B5 /* puff-puff-final.jpg */,
+				56FE43E3A0F38C472129F82F /* puff-puff-ingredient.png */,
+				FD066B0E67E93CF21D21393C /* ukwa-final.jpg */,
+				C92C458ACBCFD49108EA872B /* ukwa-ingredient.png */,
+				7733D6C6D535A0AEC1218C36 /* yam-pepper-soup-final.jpeg */,
+				DF0C01D02F68E8902AF5C81B /* yam-pepper-soup-ingredient.jpg */,
+				728F97E4F7F267BBC273552D /* yam-porridge-final.jpg */,
+				10F627CAFF7552326A5D23B8 /* yam-porridge-ingredient.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		A1000000000000000000000B /* Products */ = {
@@ -73,9 +431,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				A10000000000000000000001 /* IgboFoodHeritage */,
-			);
 			name = IgboFoodHeritage;
 			productName = IgboFoodHeritage;
 			productReference = A10000000000000000000002 /* IgboFoodHeritage.app */;
@@ -88,16 +443,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					A10000000000000000000003 = {
-						CreatedOnToolsVersion = 16.0;
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
 			buildConfigurationList = A10000000000000000000009 /* Build configuration list for PBXProject "IgboFoodHeritage" */;
-			compatibilityVersion = "Xcode 16.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -105,8 +460,6 @@
 				Base,
 			);
 			mainGroup = A1000000000000000000000A;
-			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = A1000000000000000000000B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,6 +474,107 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3F435A74FFD5F66402E4F9 /* catalog.json in Resources */,
+				F9C149EEBFED3A476F136803 /* abacha-final.jpg in Resources */,
+				2A071606D79F4DB3C8CB4D1E /* abacha-ingredient.png in Resources */,
+				DAB3A7171B5169C5C42F23B0 /* agidi-final.jpg in Resources */,
+				5EF10414BD11D08E9FFB26D1 /* agidi-ingredient.jpg in Resources */,
+				B3794921E6DF5C3E04A81DF4 /* akamu-final.png in Resources */,
+				74239A1FC1AD678E92B434B9 /* akamu-ingredient.jpg in Resources */,
+				7CE96E923B78EFB8F3631F72 /* akara-final.png in Resources */,
+				E47CB9F2817B0DAA70DBE563 /* akara-ingredient.jpg in Resources */,
+				38EE1F44BD453E258179A19D /* akidi-porridge-final.jpg in Resources */,
+				8C124B2108B603FD22DED2C2 /* akidi-porridge-ingredient.jpg in Resources */,
+				B2EFF288A69EED6C0DE64480 /* app-icon.png in Resources */,
+				600664B532D474EE3065178F /* beans-plantain-final.png in Resources */,
+				20F6C3FE81569D7C9EBDD18D /* beans-plantain-ingredient.png in Resources */,
+				C4071EE292013AC681A823C2 /* beans-porridge-final.png in Resources */,
+				918C5A533F9E63292774C0EA /* beans-porridge-ingredient.jpg in Resources */,
+				4FA1CC28E2E952D0697692F3 /* buns-final.jpg in Resources */,
+				0BBF7E72D3470DCF3939C956 /* buns-ingredient.png in Resources */,
+				3BE8F7CAD8BB3E0CFEC4A1DA /* chin-chin-final.jpeg in Resources */,
+				0704BF4805EB5C268B2365B7 /* chin-chin-ingredient.jpg in Resources */,
+				70DC66697E4DB2F8E146C40E /* cocoyam-porridge-final.png in Resources */,
+				B44E5937948A8B0EF7370993 /* cocoyam-porridge-ingredient.jpg in Resources */,
+				CB7CA4B8F5015F8F536FE081 /* corn-porridge-final.jpeg in Resources */,
+				DA92F67F918F3D3C42D701E0 /* corn-porridge-ingredient.jpg in Resources */,
+				27339760B575CFE47DB21A39 /* doughnuts-final.jpeg in Resources */,
+				0E3FF5263339F666552C3AD3 /* doughnuts-ingredient.png in Resources */,
+				4FAF245FB6AADDF811C5899D /* egg-roll-final.jpg in Resources */,
+				96302B7D93FF7B0E80619B38 /* egg-roll-ingredient.png in Resources */,
+				3C0B20730F28882FFC8251BA /* fish-pepper-soup-final.jpg in Resources */,
+				F853B82F771505F9987B59D5 /* fish-pepper-soup-ingredient.png in Resources */,
+				DF2FB61B9F51B335E0E34366 /* fish-pie-final.jpg in Resources */,
+				E26EDA8EEC18908ED92F2537 /* fish-pie-ingredient.png in Resources */,
+				7BA1B1BC2F25AEAB865EDC78 /* foi-foi-final.jpg in Resources */,
+				8AF6D2142F7665A139C33F8B /* foi-foi-ingredient.jpg in Resources */,
+				94436DFEC2AF81ACA4604B5C /* goat-pepper-soup-final.jpeg in Resources */,
+				2F940D6F0CC4B96FD0E52391 /* goat-pepper-soup-ingredient.jpg in Resources */,
+				F742F8BFC401637F5A31A202 /* ikpo-oka-final.jpg in Resources */,
+				E45A93C4D5D6B389F911DF96 /* ikpo-oka-ingredient.png in Resources */,
+				57A305F4884E5AD8C0E08E90 /* isi-ewu-final.jpg in Resources */,
+				41BE37C03C0F9C8BC8A8E7EA /* isi-ewu-ingredient.jpg in Resources */,
+				AB1F6623C54E23DE5B56882D /* ji-akwukwo-nri-final.jpg in Resources */,
+				47A27FBC225241FA73AE40F6 /* ji-akwukwo-nri-ingredient.png in Resources */,
+				E9280756C114655008D7074F /* jollof-rice-final.jpg in Resources */,
+				CE544A331666949D572553C3 /* jollof-rice-ingredient.jpg in Resources */,
+				36D157F19580CF5343CE2071 /* meat-pie-final.jpg in Resources */,
+				8C675D052569AC70B7D69A31 /* meat-pie-ingredient.png in Resources */,
+				6DF1C80A3C9870F4FBA17687 /* mkporoshi-oka-final.jpg in Resources */,
+				68013BBC8B6DC3E5484268C7 /* mkporoshi-oka-ingredient.jpg in Resources */,
+				4E81F57D568F7507A0A147CA /* moi-moi-final.png in Resources */,
+				2B3BEA09F18C31C8C6F79C7D /* moi-moi-ingredient.png in Resources */,
+				D3EC305D5C32AD0BED720717 /* nkwobi-final.jpg in Resources */,
+				3FD4576537234AB10D96EA37 /* nkwobi-ingredient.jpg in Resources */,
+				99463F769A6EC6528BDBB7EC /* ofe-achara-final.jpg in Resources */,
+				A84022F112E7C6C78288A73E /* ofe-achara-ingredient.jpg in Resources */,
+				466E6017F9384B6F0B0041C1 /* ofe-achi-final.png in Resources */,
+				B9C2A6ED8F80904D3ABEF44F /* ofe-achi-ingredient.jpg in Resources */,
+				5D29C736C3C7F5768F67EC8C /* ofe-ahihara-final.png in Resources */,
+				CABEC3234CBF699B9FE28CE5 /* ofe-ahihara-ingredient.jpg in Resources */,
+				D38609C545EB363875CECDF7 /* ofe-akwu-final.png in Resources */,
+				0C252E9572E23369D4ACDD9B /* ofe-akwu-ingredient.jpg in Resources */,
+				EA326E6217600B95DF998A87 /* ofe-egusi-final.jpeg in Resources */,
+				DE3449E782E7C6D13F5FC0DF /* ofe-egusi-ingredient.jpg in Resources */,
+				8E0BD50194D24A44FCB490A1 /* ofe-green-final.png in Resources */,
+				2DEE088F6C4D9368986B6177 /* ofe-green-ingredient.png in Resources */,
+				695EB6AFFD23FA3AC06018CE /* ofe-groundnut-final.png in Resources */,
+				66826E038D60DF5913A9A34C /* ofe-groundnut-ingredient.png in Resources */,
+				5BA682E9CE1FE53C733E1E65 /* ofe-nsala-final.png in Resources */,
+				123FF82C06AE5A2B62A97E8F /* ofe-nsala-ingredient.png in Resources */,
+				EF4D827585A1C79FCA835D2F /* ofe-ogbono-final.jpeg in Resources */,
+				8DB8FDD3D3E09242E3667C78 /* ofe-ogbono-ingredient.jpg in Resources */,
+				B38BCA9F48C042EB9DE13F1D /* ofe-oha-final.png in Resources */,
+				43663F70FC8BE57BDF32945D /* ofe-oha-ingredient.png in Resources */,
+				C77675A03D9A049C9EB525EF /* ofe-ojii-final.png in Resources */,
+				C4CB2523FC4257D971D0496E /* ofe-ojii-ingredient.png in Resources */,
+				0A31E48C3C14EF6CDCE62A2A /* ofe-okazi-final.jpg in Resources */,
+				9BAF94B5C7570BFFD4A53E3D /* ofe-okazi-ingredient.jpg in Resources */,
+				1625073CC6D2D6E462F71965 /* ofe-okra-final.png in Resources */,
+				926525499558148D72125C1C /* ofe-okra-ingredient.jpeg in Resources */,
+				8CB7D6308C736DF8980B1277 /* ofe-onugbu-final.jpeg in Resources */,
+				2F083EF8DBEFFE01908EAC20 /* ofe-onugbu-ingredient.jpg in Resources */,
+				B1115DD8F6BD7050F0740DAE /* ofe-owerri-final.jpg in Resources */,
+				C7091B336848EA86A40DA4CF /* ofe-owerri-ingredient.png in Resources */,
+				ADC332DFE2A1ABC763AA978F /* ofe-ugba-final.png in Resources */,
+				0D60CE4946F4AD33E03EB611 /* ofe-ugba-ingredient.png in Resources */,
+				2EB01853CDF3444762C32EE6 /* ofe-ukpo-final.jpeg in Resources */,
+				D0A1BAED896811AE9764D0BB /* ofe-ukpo-ingredient.jpg in Resources */,
+				6DE2E1355194F18BF87D4A35 /* ofe-uziza-final.jpg in Resources */,
+				26A875466B79A14EA548B668 /* ofe-uziza-ingredient.jpg in Resources */,
+				4D72E87531165E911BE86C21 /* okpa-final.jpg in Resources */,
+				1AE6E65DBEE2D2D06E32AE44 /* okpa-ingredient.png in Resources */,
+				28F9F21F82CDE7FFAA93F342 /* plantain-porridge-final.jpg in Resources */,
+				D134A0E795B856D1123BE1A2 /* plantain-porridge-ingredient.jpg in Resources */,
+				1959F9B5E69F3F7586D83168 /* puff-puff-final.jpg in Resources */,
+				432D04B2EC28BA26DBA44D69 /* puff-puff-ingredient.png in Resources */,
+				3F3B4362FCA717C6D76D84AE /* ukwa-final.jpg in Resources */,
+				A5AFB4521ABD983B307AB4F9 /* ukwa-ingredient.png in Resources */,
+				9324E4A887D9AA8585DC8680 /* yam-pepper-soup-final.jpeg in Resources */,
+				238A8830B75A355C869BF599 /* yam-pepper-soup-ingredient.jpg in Resources */,
+				5A25282D80175617E96A0B29 /* yam-porridge-final.jpg in Resources */,
+				0A9CC6D952CD6739979C8891 /* yam-porridge-ingredient.jpg in Resources */,
+				843860B31664B56038BE66FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +585,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEB273A43C55E70B80AE8AF /* AdminRecipesView.swift in Sources */,
+				DF56C041B5B169CB5316A865 /* AppModel.swift in Sources */,
+				444A64D6FC26E15409D803EB /* CommunityView.swift in Sources */,
+				8F1D42CC6F0BC9289FB11AFA /* Components.swift in Sources */,
+				35A476F61018C20AAAA87B96 /* HomeView.swift in Sources */,
+				3F124ACCF1FBF28A2488E5F6 /* IgboFoodHeritageApp.swift in Sources */,
+				7C431ACC090955ADBAFD7E13 /* Models.swift in Sources */,
+				3C54D70462D8734689419160 /* NutritionView.swift in Sources */,
+				0049B62AC64485F193BD2367 /* OnboardingView.swift in Sources */,
+				EE45F87993546D8CDBF30240 /* RecipesView.swift in Sources */,
+				4159223716956B83BC86301A /* RootView.swift in Sources */,
+				A360FF9ABB25B4B022262760 /* ServicesView.swift in Sources */,
+				01D158D6A4D2907ABA64EAD9 /* SettingsView.swift in Sources */,
+				0C3336E67908F35DA13DE94C /* Speaker.swift in Sources */,
+				CC597C013639A5CBDA410231 /* Supabase.swift in Sources */,
+				25A872378FDAA294496C57A1 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,13 +612,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -162,11 +633,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -181,6 +653,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IgboFoodHeritage/Info.plist;
@@ -190,7 +663,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -213,6 +686,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IgboFoodHeritage/Info.plist;
@@ -222,7 +696,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

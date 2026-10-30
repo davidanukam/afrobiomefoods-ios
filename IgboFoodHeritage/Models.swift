@@ -210,18 +210,25 @@ struct CatalogFile: Codable {
 enum Localized {
     static func text(_ lang: Lang, en: String, ig: String, fr: String? = nil) -> String {
         switch lang {
-        case .ig: ig
+        case .ig:
+            return ig
         case .fr:
-            if let fr, !fr.isEmpty { fr } else { en }
-        case .en: en
+            if let french = fr, !french.isEmpty { return french }
+            return en
+        case .en:
+            return en
         }
     }
 
     static func list(_ lang: Lang, en: [String], ig: [String], fr: [String]? = nil) -> [String] {
         switch lang {
-        case .ig: ig
-        case .fr: (fr?.isEmpty == false ? fr! : en)
-        case .en: en
+        case .ig:
+            return ig
+        case .fr:
+            if let french = fr, !french.isEmpty { return french }
+            return en
+        case .en:
+            return en
         }
     }
 }

@@ -275,16 +275,19 @@ struct CookingView: View {
     var recipeId: String
     @State private var index = 0
 
+    private var activeRecipe: Recipe? {
+        model.recipe(id: recipeId)
+    }
+
+    private var activeSteps: [String] {
+        guard let recipe = activeRecipe else { return [] }
+        return model.recipeCopy(recipe).instructions
+    }
+
     var body: some View {
         Group {
-            if let recipe = model.recipe(id: recipeId) {
-                let steps = model.recipeCopy(recipe).instructions
-                if steps.isEmpty {
-                    StyledText(text: model.t("noStepsFound"), kind: .body, color: colors.text)
-                        .padding(24)
-                } else {
-                    cooking(recipe, steps)
-                }
+            if let recipe = activeRecipe, !activeSteps.isEmpty {
+                cooking(recipe, activeSteps)
             } else {
                 StyledText(text: model.t("noStepsFound"), kind: .body, color: colors.text)
                     .padding(24)

@@ -20,8 +20,8 @@ struct RootView: View {
         .environment(\.highContrast, model.settings.highContrast)
         .tint(model.colors.forest)
         .onAppear(perform: applyChrome)
-        .onChange(of: model.settings.highContrast) { _, _ in applyChrome() }
-        .onChange(of: model.settings.fontScale) { _, _ in applyChrome() }
+        .onChange(of: model.settings.highContrast) { _ in applyChrome() }
+        .onChange(of: model.settings.fontScale) { _ in applyChrome() }
     }
 
     private func applyChrome() {
