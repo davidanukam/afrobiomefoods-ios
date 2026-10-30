@@ -55,9 +55,10 @@ struct RootView: View {
 struct MainTabs: View {
     @EnvironmentObject private var model: AppModel
     @Environment(\.palette) private var colors
+    @State private var tab = AppTab.home
 
     var body: some View {
-        TabView(selection: $model.tab) {
+        TabView(selection: $tab) {
             HomeView()
                 .tabItem { Label(model.t("home"), systemImage: "house.fill") }
                 .tag(AppTab.home)
@@ -72,5 +73,11 @@ struct MainTabs: View {
                 .tag(AppTab.services)
         }
         .tint(colors.forest)
+        .onChange(of: model.tab) { newValue in
+            if tab != newValue { tab = newValue }
+        }
+        .onChange(of: tab) { newValue in
+            if model.tab != newValue { model.tab = newValue }
+        }
     }
 }

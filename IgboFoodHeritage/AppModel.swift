@@ -6,15 +6,33 @@ import UIKit
 final class AppModel: ObservableObject {
     nonisolated let objectWillChange = ObservableObjectPublisher()
 
-    @Published var settings: AppSettings
-    @Published var tab: AppTab = .home
-    @Published private(set) var catalog: CatalogFile
-    @Published var posts: [CommunityPost]
-    @Published var services: [ServiceItem]
-    @Published var session: AuthSession?
-    @Published var loadError: String?
-    @Published var authBusy = false
-    @Published var speechWarning: String?
+    @Published var settings: AppSettings {
+        willSet { objectWillChange.send() }
+    }
+    @Published var tab: AppTab = .home {
+        willSet { objectWillChange.send() }
+    }
+    @Published private(set) var catalog: CatalogFile {
+        willSet { objectWillChange.send() }
+    }
+    @Published var posts: [CommunityPost] {
+        willSet { objectWillChange.send() }
+    }
+    @Published var services: [ServiceItem] {
+        willSet { objectWillChange.send() }
+    }
+    @Published var session: AuthSession? {
+        willSet { objectWillChange.send() }
+    }
+    @Published var loadError: String? {
+        willSet { objectWillChange.send() }
+    }
+    @Published var authBusy = false {
+        willSet { objectWillChange.send() }
+    }
+    @Published var speechWarning: String? {
+        willSet { objectWillChange.send() }
+    }
 
     let speaker = Speaker()
     let supabaseEnabled: Bool

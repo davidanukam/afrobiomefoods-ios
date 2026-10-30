@@ -1,0 +1,1 @@
+settings set target.process.extra-startup-command "process handle SIGTERM -s false -p true -n false"
