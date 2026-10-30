@@ -55,7 +55,7 @@ struct HomeView: View {
             .toolbarBackground(colors.cream, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(value: HomeRoute.settings) {
                         Image(systemName: "gearshape")
                             .font(.system(size: 20, weight: .semibold))
