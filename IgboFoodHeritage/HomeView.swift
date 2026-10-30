@@ -3,9 +3,10 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var model: AppModel
     @Environment(\.palette) private var colors
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     if let featured = model.featuredRecipe {
@@ -36,16 +37,18 @@ struct HomeView: View {
 
                     StyledText(text: model.t("quickActions"), kind: .subtitle, color: colors.text)
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
-                        NavigationLink(value: HomeRoute.nutrition) {
-                            tileLabel(model.t("nutrition"), "leaf")
+                        quickTile(model.t("nutrition"), "leaf") {
+                            path.append(HomeRoute.nutrition)
                         }
-                        .buttonStyle(.plain)
-                        Button { model.tab = .recipes } label: { tileLabel(model.t("recipes"), "book") }
-                            .buttonStyle(.plain)
-                        Button { model.tab = .community } label: { tileLabel(model.t("community"), "person.2") }
-                            .buttonStyle(.plain)
-                        Button { model.tab = .services } label: { tileLabel(model.t("services"), "mappin.and.ellipse") }
-                            .buttonStyle(.plain)
+                        quickTile(model.t("recipes"), "book") {
+                            model.tab = .recipes
+                        }
+                        quickTile(model.t("community"), "person.2") {
+                            model.tab = .community
+                        }
+                        quickTile(model.t("services"), "mappin.and.ellipse") {
+                            model.tab = .services
+                        }
                     }
                 }
                 .padding(20)
@@ -82,6 +85,14 @@ struct HomeView: View {
                 }
             }
         }
+    }
+
+    private func quickTile(_ title: String, _ symbol: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            tileLabel(title, symbol)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
     }
 
     private func tileLabel(_ title: String, _ symbol: String) -> some View {
