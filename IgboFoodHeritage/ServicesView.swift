@@ -12,38 +12,49 @@ struct ServicesView: View {
     )
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                StyledText(text: model.t("sourcingGuide"), kind: .subtitle, color: colors.text)
-                StyledText(text: model.t("sourcingGuideIntro"), kind: .body, color: colors.textMuted)
-                HStack(spacing: 10) {
-                    Chip(label: model.t("listView"), active: mode == "list", expands: true) { mode = "list" }
-                    Chip(label: model.t("mapView"), active: mode == "map", expands: true) { mode = "map" }
-                }
-                .padding(.vertical, 4)
+        VStack(alignment: .leading, spacing: 12) {
+            heading
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
 
-                if mode == "map" {
-                    Map(coordinateRegion: $region, annotationItems: model.services.filter(\.hasCoordinates)) { item in
-                        MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
-                    }
-                    .frame(height: 280)
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .accessibilityLabel(model.t("mapView"))
-                    .onAppear { region = fittedRegion(model.services) }
-                    .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
-                        region = fittedRegion(model.services)
-                    }
+            if mode == "map" {
+                Map(coordinateRegion: $region, annotationItems: model.services.filter(\.hasCoordinates)) { item in
+                    MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
                 }
-
-                ForEach(model.services) { item in
-                    serviceCard(item)
+                .frame(height: 280)
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .padding(.horizontal, 20)
+                .accessibilityLabel(model.t("mapView"))
+                .onAppear { region = fittedRegion(model.services) }
+                .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
+                    region = fittedRegion(model.services)
                 }
             }
-            .padding(20)
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    ForEach(model.services) { item in
+                        serviceCard(item)
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 28)
+            }
+            .refreshable { await model.refreshServices() }
         }
         .appBackground()
-        .refreshable { await model.refreshServices() }
         .task { await model.refreshServices() }
+    }
+
+    private var heading: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            StyledText(text: model.t("sourcingGuide"), kind: .subtitle, color: colors.text)
+            StyledText(text: model.t("sourcingGuideIntro"), kind: .body, color: colors.textMuted)
+            HStack(spacing: 10) {
+                Chip(label: model.t("listView"), active: mode == "list", expands: true) { mode = "list" }
+                Chip(label: model.t("mapView"), active: mode == "map", expands: true) { mode = "map" }
+            }
+        }
     }
 
     private func serviceCard(_ item: ServiceItem) -> some View {
