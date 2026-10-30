@@ -5,17 +5,17 @@ import Foundation
 final class Speaker {
     private let synth = AVSpeechSynthesizer()
 
-    func speak(_ text: String, language: Lang, rate: Float = 0.95) {
+    @discardableResult
+    func speak(_ text: String, language: Lang, rate: Float = 0.95) -> Bool {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
+        guard !trimmed.isEmpty, let voice = voice(for: language) else { return false }
         activateSession()
         synth.stopSpeaking(at: .immediate)
         let utterance = AVSpeechUtterance(string: trimmed)
-        if let voice = voice(for: language) {
-            utterance.voice = voice
-        }
+        utterance.voice = voice
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * rate
         synth.speak(utterance)
+        return true
     }
 
     func stop() {
@@ -30,6 +30,7 @@ final class Speaker {
 
     private func voice(for language: Lang) -> AVSpeechSynthesisVoice? {
         let installed = AVSpeechSynthesisVoice.speechVoices().filter(isUsable)
+        guard !installed.isEmpty else { return nil }
         let wanted = languagePrefix(language.speechCode)
         if let match = installed.first(where: { languagePrefix($0.language) == wanted }) {
             return match
@@ -37,30 +38,11 @@ final class Speaker {
         if let english = installed.first(where: { languagePrefix($0.language) == "en" }) {
             return english
         }
-        if let current = usable(AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())) {
-            return current
-        }
-        if let english = usable(AVSpeechSynthesisVoice(language: "en-US")) {
-            return english
-        }
-        for identifier in [
-            "com.apple.voice.compact.en-US.Samantha",
-            "com.apple.ttsbundle.siri_female_en-US_compact",
-        ] {
-            if let voice = usable(AVSpeechSynthesisVoice(identifier: identifier)) {
-                return voice
-            }
-        }
         return installed.first
     }
 
     private func languagePrefix(_ code: String) -> String {
         code.split(separator: "-").first.map(String.init)?.lowercased() ?? code.lowercased()
-    }
-
-    private func usable(_ voice: AVSpeechSynthesisVoice?) -> AVSpeechSynthesisVoice? {
-        guard let voice, isUsable(voice) else { return nil }
-        return voice
     }
 
     private func isUsable(_ voice: AVSpeechSynthesisVoice) -> Bool {

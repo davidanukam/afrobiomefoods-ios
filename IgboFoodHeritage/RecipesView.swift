@@ -266,7 +266,7 @@ struct RecipeDetailView: View {
         let copy = model.recipeCopy(recipe, language: language)
         let steps = copy.instructions.enumerated().map { "Step \($0.offset + 1). \($0.element)" }
         let body = (copy.ingredients + [""] + steps).joined(separator: ". ")
-        model.speaker.speak(body, language: language)
+        model.speakAloud(body, language: language)
     }
 
     private func shareBody(_ copy: RecipeCopy) -> String {
@@ -323,7 +323,7 @@ struct CookingView: View {
                 StyledText(text: model.t("cookingDemoNote"), kind: .caption, color: colors.textMuted)
                 VStack(spacing: 12) {
                     control(model.t("pause")) { model.speaker.stop() }
-                    control(model.t("replay")) { model.speaker.speak(current, language: model.settings.language, rate: 0.92) }
+                    control(model.t("replay")) { model.speakAloud(current, language: model.settings.language, rate: 0.92) }
                     control(model.t("nextStep"), disabled: index >= steps.count - 1) {
                         index = min(index + 1, steps.count - 1)
                     }

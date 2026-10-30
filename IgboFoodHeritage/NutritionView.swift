@@ -89,7 +89,7 @@ private struct ConditionCard: View {
                 ForEach(Array(tips.enumerated()), id: \.offset) { _, tip in
                     StyledText(text: "• \(tip)", kind: .body, color: colors.text)
                 }
-                Button(action: { model.speaker.speak("\(title). \(summary)", language: model.settings.language) }) {
+                Button(action: { model.speakAloud("\(title). \(summary)", language: model.settings.language) }) {
                     Text(model.t("listenTTS"))
                         .font(.system(size: 15 * model.settings.fontScale.multiplier, weight: .semibold))
                         .foregroundStyle(colors.inverse)

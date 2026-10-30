@@ -22,6 +22,14 @@ struct RootView: View {
         .onAppear(perform: applyChrome)
         .onChange(of: model.settings.highContrast) { _ in applyChrome() }
         .onChange(of: model.settings.fontScale) { _ in applyChrome() }
+        .alert(model.t("listen"), isPresented: Binding(
+            get: { model.speechWarning != nil },
+            set: { if !$0 { model.speechWarning = nil } }
+        )) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(model.speechWarning ?? "")
+        }
     }
 
     private func applyChrome() {

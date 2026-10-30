@@ -14,6 +14,7 @@ final class AppModel: ObservableObject {
     @Published var session: AuthSession?
     @Published var loadError: String?
     @Published var authBusy = false
+    @Published var speechWarning: String?
 
     let speaker = Speaker()
     let supabaseEnabled: Bool
@@ -125,6 +126,18 @@ final class AppModel: ObservableObject {
 
     func resetOnboarding() {
         updateSettings { $0.onboardingComplete = false }
+    }
+
+    func speakAloud(_ text: String, language: Lang, rate: Float = 0.95) {
+        if speaker.speak(text, language: language, rate: rate) { return }
+        switch settings.language {
+        case .fr:
+            speechWarning = "Aucune voix n’est installée sur ce simulateur. Ouvrez Réglages, puis Accessibilité, Contenu énoncé, Voix, et téléchargez English."
+        case .ig:
+            speechWarning = "Ekwentị a enweghị olu okwu. Meghee Settings, Accessibility, Spoken Content, Voices, wee budata English."
+        case .en:
+            speechWarning = "No speaking voice is installed on this simulator. Open Settings, then Accessibility, Spoken Content, Voices, and download English."
+        }
     }
 
     func haptic() {

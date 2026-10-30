@@ -121,10 +121,20 @@ struct StyledText: View {
     var color: Color
     var alignment: TextAlignment = .leading
 
+    private var textAlignment: Alignment {
+        switch alignment {
+        case .center: return .center
+        case .trailing: return .trailing
+        default: return .leading
+        }
+    }
+
     var body: some View {
         Text(text)
             .font(.system(size: kind.size * scale, weight: kind.weight))
             .foregroundStyle(color)
             .multilineTextAlignment(alignment)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: textAlignment)
     }
 }

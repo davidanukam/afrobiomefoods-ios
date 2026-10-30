@@ -23,23 +23,26 @@ struct PhotoView: View {
     var height: CGFloat? = nil
 
     var body: some View {
-        Group {
-            if let image = BundleImage.load(filename) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-            } else if let fallback = BundleImage.load("app-icon.png") {
-                Image(uiImage: fallback)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(24)
-            } else {
-                Color.gray.opacity(0.2)
+        GeometryReader { proxy in
+            ZStack {
+                if let image = BundleImage.load(filename) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                } else if let fallback = BundleImage.load("app-icon.png") {
+                    Image(uiImage: fallback)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(24)
+                } else {
+                    Color.gray.opacity(0.2)
+                }
             }
+            .frame(width: proxy.size.width, height: proxy.size.height)
+            .clipped()
         }
         .frame(maxWidth: .infinity)
         .frame(height: height)
-        .clipped()
     }
 }
 

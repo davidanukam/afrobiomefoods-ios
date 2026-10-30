@@ -19,6 +19,7 @@ struct HomeView: View {
                                 }
                                 .padding(18)
                             }
+                            .frame(maxWidth: .infinity)
                             .frame(height: 240)
                             .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
                         }
@@ -48,6 +49,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             .appBackground()
             .navigationTitle(model.t("appTitle"))
