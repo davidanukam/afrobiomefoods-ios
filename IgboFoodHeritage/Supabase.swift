@@ -2,7 +2,7 @@ import AuthenticationServices
 import CryptoKit
 import Foundation
 import Security
-@preconcurrency import UIKit
+import UIKit
 
 struct SupabaseConfig {
     let url: URL

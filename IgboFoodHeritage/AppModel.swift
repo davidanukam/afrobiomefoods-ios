@@ -1,8 +1,11 @@
+import Combine
 import Foundation
 import UIKit
 
 @MainActor
 final class AppModel: ObservableObject {
+    nonisolated let objectWillChange = ObservableObjectPublisher()
+
     @Published var settings: AppSettings
     @Published var tab: AppTab = .home
     @Published private(set) var catalog: CatalogFile
