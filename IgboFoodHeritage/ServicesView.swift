@@ -25,8 +25,8 @@ struct ServicesView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 .padding(.horizontal, 20)
                 .accessibilityLabel(model.t("mapView"))
-                .onAppear { region = fittedRegion(model.services) }
                 .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
+                    guard mode == "map" else { return }
                     region = fittedRegion(model.services)
                 }
             }
@@ -43,7 +43,10 @@ struct ServicesView: View {
             .refreshable { await model.refreshServices() }
         }
         .appBackground()
-        .task { await model.refreshServices() }
+        .task {
+            guard model.supabaseEnabled else { return }
+            await model.refreshServices()
+        }
     }
 
     private var heading: some View {
@@ -52,7 +55,10 @@ struct ServicesView: View {
             StyledText(text: model.t("sourcingGuideIntro"), kind: .body, color: colors.textMuted)
             HStack(spacing: 10) {
                 Chip(label: model.t("listView"), active: mode == "list", expands: true) { mode = "list" }
-                Chip(label: model.t("mapView"), active: mode == "map", expands: true) { mode = "map" }
+                Chip(label: model.t("mapView"), active: mode == "map", expands: true) {
+                    region = fittedRegion(model.services)
+                    mode = "map"
+                }
             }
         }
     }

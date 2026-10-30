@@ -58,7 +58,10 @@ struct CommunityView: View {
             .appBackground()
             .toolbar(.hidden, for: .navigationBar)
             .refreshable { await model.refreshCommunity() }
-            .task { await model.refreshCommunity() }
+            .task {
+                guard model.supabaseEnabled else { return }
+                await model.refreshCommunity()
+            }
             .navigationDestination(for: CommunityRoute.self) { route in
                 switch route {
                 case .share(let kind):

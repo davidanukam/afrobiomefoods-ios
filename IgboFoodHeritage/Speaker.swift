@@ -3,23 +3,26 @@ import Foundation
 
 @MainActor
 final class Speaker {
-    private let synth = AVSpeechSynthesizer()
+    private var synth: AVSpeechSynthesizer?
+    private var cachedVoices: [AVSpeechSynthesisVoice]?
 
     @discardableResult
     func speak(_ text: String, language: Lang, rate: Float = 0.95) -> Bool {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, let voice = voice(for: language) else { return false }
+        let speaker = synth ?? AVSpeechSynthesizer()
+        synth = speaker
         activateSession()
-        synth.stopSpeaking(at: .immediate)
+        speaker.stopSpeaking(at: .immediate)
         let utterance = AVSpeechUtterance(string: trimmed)
         utterance.voice = voice
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * rate
-        synth.speak(utterance)
+        speaker.speak(utterance)
         return true
     }
 
     func stop() {
-        synth.stopSpeaking(at: .immediate)
+        synth?.stopSpeaking(at: .immediate)
     }
 
     private func activateSession() {
@@ -29,7 +32,7 @@ final class Speaker {
     }
 
     private func voice(for language: Lang) -> AVSpeechSynthesisVoice? {
-        let installed = AVSpeechSynthesisVoice.speechVoices().filter(isUsable)
+        let installed = installedVoices()
         guard !installed.isEmpty else { return nil }
         let wanted = languagePrefix(language.speechCode)
         if let match = installed.first(where: { languagePrefix($0.language) == wanted }) {
@@ -39,6 +42,13 @@ final class Speaker {
             return english
         }
         return installed.first
+    }
+
+    private func installedVoices() -> [AVSpeechSynthesisVoice] {
+        if let cachedVoices { return cachedVoices }
+        let voices = AVSpeechSynthesisVoice.speechVoices().filter(isUsable)
+        cachedVoices = voices
+        return voices
     }
 
     private func languagePrefix(_ code: String) -> String {

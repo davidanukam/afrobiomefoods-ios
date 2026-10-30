@@ -180,26 +180,16 @@ final class AppModel: ObservableObject {
     }
 
     func refreshCommunity() async {
-        guard let client else {
-            posts = catalog.community
-            return
-        }
+        guard let client else { return }
         if let remote = try? await client.fetchCommunity(), !remote.isEmpty {
             posts = remote.sorted { $0.timestamp > $1.timestamp }
-        } else {
-            posts = catalog.community
         }
     }
 
     func refreshServices() async {
-        guard let client else {
-            services = catalog.services
-            return
-        }
+        guard let client else { return }
         if let remote = try? await client.fetchServices(), !remote.isEmpty {
             services = remote
-        } else {
-            services = catalog.services
         }
     }
 

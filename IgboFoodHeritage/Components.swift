@@ -12,7 +12,7 @@ enum BundleImage {
         let url = Bundle.main.url(forResource: base, withExtension: ext, subdirectory: "Resources/Images")
             ?? Bundle.main.url(forResource: base, withExtension: ext, subdirectory: "Images")
             ?? Bundle.main.url(forResource: base, withExtension: ext)
-        guard let url, let image = UIImage(contentsOfFile: url.path) else { return nil }
+        guard let url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) else { return nil }
         cache.setObject(image, forKey: key)
         return image
     }
