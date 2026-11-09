@@ -18,18 +18,15 @@ struct ServicesView: View {
                 .padding(.top, 20)
 
             if mode == "map" {
-                Map(coordinateRegion: $region, annotationItems: model.services.filter(\.hasCoordinates)) { item in
-                    MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
-                }
-                .frame(maxWidth: .infinity, minHeight: 280, maxHeight: 280)
-                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                .padding(.horizontal, 20)
-                .layoutPriority(1)
-                .accessibilityLabel(model.t("mapView"))
-                .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
-                    guard mode == "map" else { return }
-                    region = fittedRegion(model.services)
-                }
+                ShopMap(region: region, shops: model.services.filter(\.hasCoordinates))
+                    .frame(maxWidth: .infinity, minHeight: 280, maxHeight: 280)
+                    .padding(.horizontal, 20)
+                    .layoutPriority(1)
+                    .accessibilityLabel(model.t("mapView"))
+                    .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
+                        guard mode == "map" else { return }
+                        region = fittedRegion(model.services)
+                    }
             }
 
             ScrollView {
@@ -169,5 +166,48 @@ struct ServicesView: View {
     private func open(_ url: URL?) {
         guard let url else { return }
         UIApplication.shared.open(url)
+    }
+}
+
+private struct ShopMap: UIViewRepresentable {
+    var region: MKCoordinateRegion
+    var shops: [ServiceItem]
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    func makeUIView(context: Context) -> MKMapView {
+        let map = MKMapView(frame: CGRect(x: 0, y: 0, width: 360, height: 280))
+        map.isRotateEnabled = false
+        map.isPitchEnabled = false
+        map.pointOfInterestFilter = .excludingAll
+        map.layer.cornerRadius = 22
+        map.clipsToBounds = true
+        context.coordinator.apply(region, shops: shops, to: map)
+        return map
+    }
+
+    func updateUIView(_ map: MKMapView, context: Context) {
+        context.coordinator.apply(region, shops: shops, to: map)
+    }
+
+    final class Coordinator {
+        private var applied = ""
+
+        func apply(_ region: MKCoordinateRegion, shops: [ServiceItem], to map: MKMapView) {
+            let key = shops.map(\.service_id).joined(separator: "|")
+                + "|\(region.center.latitude)|\(region.center.longitude)"
+            guard key != applied else { return }
+            applied = key
+            map.setRegion(region, animated: false)
+            map.removeAnnotations(map.annotations)
+            for shop in shops where shop.hasCoordinates {
+                let pin = MKPointAnnotation()
+                pin.title = shop.name
+                pin.coordinate = CLLocationCoordinate2D(latitude: shop.lat, longitude: shop.lng)
+                map.addAnnotation(pin)
+            }
+        }
     }
 }
