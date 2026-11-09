@@ -21,9 +21,10 @@ struct ServicesView: View {
                 Map(coordinateRegion: $region, annotationItems: model.services.filter(\.hasCoordinates)) { item in
                     MapMarker(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng))
                 }
-                .frame(height: 280)
+                .frame(maxWidth: .infinity, minHeight: 280, maxHeight: 280)
                 .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 .padding(.horizontal, 20)
+                .layoutPriority(1)
                 .accessibilityLabel(model.t("mapView"))
                 .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
                     guard mode == "map" else { return }
