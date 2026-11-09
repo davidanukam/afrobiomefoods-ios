@@ -23,7 +23,7 @@ struct ServicesView: View {
                     .padding(.horizontal, 20)
                     .layoutPriority(1)
                     .accessibilityLabel(model.t("mapView"))
-                    .onChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
+                    .onValueChange(of: model.services.map(\.service_id).joined(separator: "|")) { _ in
                         guard mode == "map" else { return }
                         region = fittedRegion(model.services)
                     }

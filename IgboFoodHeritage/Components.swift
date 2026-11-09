@@ -159,6 +159,19 @@ struct RoundedField: View {
 }
 
 extension View {
+    /// iOS 17 deprecates the one-parameter `onChange`. iOS 16 still needs a change
+    /// observer, so the older system call is not used.
+    @ViewBuilder
+    func onValueChange<Value: Equatable>(of value: Value, perform action: @escaping (Value) -> Void) -> some View {
+        if #available(iOS 17.0, *) {
+            onChange(of: value) { _, newValue in
+                action(newValue)
+            }
+        } else {
+            modifier(LegacyValueChange(value: value, action: action))
+        }
+    }
+
     func noticeAlert(_ notice: Binding<Notice?>) -> some View {
         alert(notice.wrappedValue?.title ?? "", isPresented: Binding(
             get: { notice.wrappedValue != nil },
@@ -172,6 +185,26 @@ extension View {
 
     func appBackground() -> some View {
         modifier(AppBackground())
+    }
+}
+
+private struct LegacyValueChange<Value: Equatable>: ViewModifier {
+    let value: Value
+    let action: (Value) -> Void
+    @State private var previous: Value?
+
+    func body(content: Content) -> some View {
+        content
+            .onAppear { previous = value }
+            .background {
+                if let previous, previous != value {
+                    Color.clear.onAppear {
+                        let current = value
+                        self.previous = current
+                        action(current)
+                    }
+                }
+            }
     }
 }
 

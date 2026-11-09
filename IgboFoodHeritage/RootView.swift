@@ -20,8 +20,8 @@ struct RootView: View {
         .environment(\.highContrast, model.settings.highContrast)
         .tint(model.colors.forest)
         .onAppear(perform: applyChrome)
-        .onChange(of: model.settings.highContrast) { _ in applyChrome() }
-        .onChange(of: model.settings.fontScale) { _ in applyChrome() }
+        .onValueChange(of: model.settings.highContrast) { _ in applyChrome() }
+        .onValueChange(of: model.settings.fontScale) { _ in applyChrome() }
         .alert(model.t("listen"), isPresented: Binding(
             get: { model.speechWarning != nil },
             set: { if !$0 { model.speechWarning = nil } }
@@ -73,10 +73,10 @@ struct MainTabs: View {
                 .tag(AppTab.services)
         }
         .tint(colors.forest)
-        .onChange(of: model.tab) { newValue in
+        .onValueChange(of: model.tab) { newValue in
             if tab != newValue { tab = newValue }
         }
-        .onChange(of: tab) { newValue in
+        .onValueChange(of: tab) { newValue in
             if model.tab != newValue { model.tab = newValue }
         }
     }
