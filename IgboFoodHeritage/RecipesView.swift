@@ -34,13 +34,14 @@ struct RecipesView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
-                    TextField(model.t("search"), text: $query)
+                    TextField("", text: $query, prompt: Text(model.t("search")).foregroundColor(colors.textMuted))
                         .textFieldStyle(.plain)
                         .font(.system(size: 17 * model.settings.fontScale.multiplier))
+                        .foregroundColor(colors.text)
+                        .tint(colors.forest)
                         .padding(.horizontal, 18)
-                        .frame(minHeight: 48)
-                        .background(colors.card)
-                        .clipShape(Capsule())
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(colors.card, in: Capsule())
                         .overlay(Capsule().stroke(colors.border, lineWidth: model.settings.highContrast ? 2 : 0))
                         .accessibilityLabel(model.t("search"))
 
